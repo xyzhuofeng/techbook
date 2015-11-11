@@ -1,8 +1,1 @@
-#mabi
-------
-
-##abcdefghijklmnopqrstuvwxyz
-##abcxth
-
-dhjhfjnjkhb
-gcj
+![这是一张图片](lalala.png)
