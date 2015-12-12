@@ -29,14 +29,26 @@ events
 	#参考事件模型，use [ kqueue | rtsig | epoll | /dev/poll | select | poll ]; epoll模型是Linux 2.6以上版本内核中的高性能网络I/O模型，如果跑在FreeBSD上面，就用kqueue模型。
 	use epoll;
 	#单个进程最大连接数（最大连接数=连接数*进程数）
-	worker_connections 65535;
+	#工作进程的最大连接数量，根据硬件调整，和前面工作进程配合起来用，尽量大，但是别把cpu跑到100%就行
+	worker_connections 4096;
 }
 
 #设定http服务器
 http
 {
 	include mime.types; #文件扩展名与文件类型映射表
+	include /etc/nginx/proxy.conf;#反向代理配置，可以打开proxy.conf看看
+	include /etc/nginx/fastcgi.conf;#fastcgi配置，可以打开fastcgi.conf看看
+	
 	default_type application/octet-stream; #默认文件类型
+	
+	#日志的格式
+	log_format main ‘$remote_addr – $remote_user [$time_local] $status ‘
+	‘”$request” $body_bytes_sent “$http_referer” ‘
+	‘”$http_user_agent” “$http_x_forwarded_for”’;
+	#访问日志
+	access_log logs/access.log main;
+	
 	#charset utf-8; #默认编码
 	server_names_hash_bucket_size 128; #服务器名字的hash表大小
 	client_header_buffer_size 32k; #上传文件大小限制
@@ -69,10 +81,10 @@ http
 	#limit_zone crawler $binary_remote_addr 10m; #开启限制IP连接数的时候需要使用
  
 	upstream blog.ha97.com {
-	#upstream的负载均衡，weight是权重，可以根据机器配置定义权重。weigth参数表示权值，权值越高被分配到的几率越大。
-	server 192.168.80.121:80 weight=3;
-	server 192.168.80.122:80 weight=2;
-	server 192.168.80.123:80 weight=3;
+		#upstream的负载均衡，weight是权重，可以根据机器配置定义权重。weigth参数表示权值，权值越高被分配到的几率越大。
+		server 192.168.80.121:80 weight=3;
+		server 192.168.80.122:80 weight=2;
+	}
 }
 
 #虚拟主机的配置
