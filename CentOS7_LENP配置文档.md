@@ -198,10 +198,11 @@ server {
         root           /usr/share/nginx/html;
         fastcgi_pass   127.0.0.1:9000;
         fastcgi_index  index.php;
+        include        fastcgi_params;
         //原/script$fastcgi_script_name
         // //script应换成网站目录绝对路径或$document_root
         fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
-        include        fastcgi_params;
+        
     }
 
     # deny access to .htaccess files, if Apache's document root
