@@ -84,6 +84,15 @@ chkconfig mysqld on
 在成功启动 MariaDB/MySQL 服务后，执行在 MariaDB/MySQL 服务包中的脚本。这一次的运行会为为数据库服务器进行一些安全强化措施，如设置（非空）的 root 密码、删除匿名用户、锁定远程访问。
 ```
 mysql_secure_installation
+
+Enter current password for root (enter for none): ----》默认为空密码直接回车
+Set root password? [Y/n] y                        ----》设置root密码
+New password:                                     ----》新密码
+Re-enter new password:                            ----》再次确认新密码
+Remove anonymous users? [Y/n] y                   ----》禁止匿名访问
+Disallow root login remotely? [Y/n] y             ----》不允许root远程访问
+Remove test database and access to it? [Y/n] y    ----》删除测试数据库test
+Reload privilege tables now? [Y/n] y              ----》重新加载授权信息
 ```
 这就是数据库的设置。现在进行下一步。
 
