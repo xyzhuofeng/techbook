@@ -38,10 +38,24 @@ Git是众所周知的版本控制系统，在此不再赘述。
 主机是阿里云的，Git是知名服务供应商提供的，所以部署时的传输速度自然不俗。
 
 ##Git部署操作
+以下操作，笔者使用XShell软件连接主机来完成。
+如果你是首次进行Git操作，建议使用`SSH-keygen`命令生成Git密钥来登录你的远程仓库，不仅安全而且免除多次输入账号密码的麻烦。
+```
+ssh-keygen -t rsa
+```
+`cd`命令进入到主机的网站目录中，笔者的主机环境的目录是/usr/share/nginx/html
+```
+cd /usr/share/nginx/html
+```
+将当前目录初始化为本地仓库
 ```
 git init
 ```
+为这个本地仓库添加一个远程仓库，仓库名自定义为origin（算是惯例吧），后面那串地址是SSH地址（通过密钥登录），可以是HTTPS地址（通过账号密码登录），看起来像这样：
+https://git.coding.net/username/xxxxx.git
 ```
-git remote add origin git@git.coding.net:clyoko/gxgkadmin.git
+git remote add origin git@git.coding.net:username/xxxx.git
+```
+```
 git pull origin master:master
 ```
