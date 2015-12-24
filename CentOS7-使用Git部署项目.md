@@ -11,6 +11,8 @@ by Hyper庆 整理
 
 ##FTP上传
 
+（本文不叙述该方法操作）
+
 通常使用FTP软件，从客户端连接到主机进行文件传输。客户机安装FTP软件后，设置主机地址、登录账号、密码，即可连接到主机的文件系统，进行上传下载（需要有相应的操作权限）。
 
 笔者在这里推荐WinSCP和FileZilla（开源）。有中文界面，持续更新，功能使用，最重要的是能满足部署项目和部署时自带编辑器方便修改配置的需求。
@@ -35,7 +37,11 @@ Git是众所周知的版本控制系统，在此不再赘述。
 
 主机是阿里云的，Git是知名服务供应商提供的，所以部署时的传输速度自然不俗。
 
- git init
- git remote add origin git@git.coding.net:clyoko/gxgkadmin.git
+##Git部署操作
+```
+git init
+```
+```
+git remote add origin git@git.coding.net:clyoko/gxgkadmin.git
 git pull origin master:master
-
+```
