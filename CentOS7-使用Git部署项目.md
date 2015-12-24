@@ -43,8 +43,6 @@ Git是众所周知的版本控制系统，在此不再赘述。
 如果你是首次进行Git操作，建议使用`SSH-keygen`命令生成Git密钥来登录你的远程仓库，不仅安全而且免除多次输入账号密码的麻烦。
 
 先查看.ssh目录是否存在，如果不存在，请建立。
-
-
 首先，确保你当前打开了这个目录 ~ (用户目录) 效果看起来像这样：
 ```
 [root@localhost ~]#
@@ -69,19 +67,27 @@ ssh-keygen -t rsa
 
 ----
 
+**以下是首次部署项目代码的操作**
+
 `cd`命令进入到主机的网站目录中，笔者的主机环境的目录是/usr/share/nginx/html
 ```
 cd /usr/share/nginx/html
 ```
-将当前目录初始化为本地仓库
+将当前目录初始化为本地仓库（只需初始化一次）
 ```
 git init
 ```
-为这个本地仓库添加一个远程仓库，仓库名自定义为origin（算是惯例吧），后面那串地址是SSH地址（通过密钥登录），可以是HTTPS地址（通过账号密码登录），看起来像这样：
+为这个本地仓库添加一个远程仓库（`git remote add`），仓库名自定义为origin（算是惯例吧），后面那串地址是SSH地址（通过密钥登录），可以是HTTPS地址（通过账号密码登录），看起来像这样：
 https://git.coding.net/username/xxxxx.git
 ```
 git remote add origin git@git.coding.net:username/xxxx.git
 ```
+从Git远程仓库origin中拉取master分支到本地master分支
+`git pull <远程主机名> <远程分支名>:<本地分支名>`
 ```
 git pull origin master:master
 ```
+项目代码已经出现在当前文件夹
+**部署操作到目前为止全部结束**
+
+----
