@@ -91,3 +91,40 @@ git pull origin master:master
 **部署操作到目前为止全部结束**
 
 ----
+
+##维护项目
+
+当项目代码变更，且`git push`到Git服务器上后，需要在服务器执行以下操作来获取更新。
+
+切换到网站目录
+```
+cd /usr/share/nginx/html
+```
+拉取master分支
+```
+git pull origin master:master
+```
+嗯，是的，代码已经更新好了。就是这么简单！
+
+顺利的话，你会看到类似这样的提示
+```
+$ git pull origin master:master
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 3 (delta 2), reused 0 (delta 0)
+Unpacking objects: 100% (3/3), done.
+From git.coding.net:clyoko/mabi
+   c3cd26f..72227db  master     -> master
+   c3cd26f..72227db  master     -> origin/master
+warning: fetch updated the current branch head.
+fast-forwarding your working tree from
+commit c3cd26f58dd925dd92530cd6ae23a4c23a4cb63d.
+Already up-to-date.
+```
+即使是重复执行该句也无所谓，它会提示：
+```
+$ git pull origin master:master
+Already up-to-date.
+```
+
+从此，愉快地部署你的项目吧！
