@@ -1,9 +1,0 @@
-#php常用语句
-
-```php
-bool empty ( mixed $var )
-判断一个变量是否被认为是空的。当一个变量并不存在，或者它的值等同于FALSE，那么它会被认为不存在。如果变量不存在的话，empty()并不会产生警告。
-[文档](http://www.php.net/manual/zh/function.empty.php)
-```
-
-
