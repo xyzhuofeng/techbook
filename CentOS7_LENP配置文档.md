@@ -213,13 +213,14 @@ server {
         fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
         
     }
-
+    #下面这段是禁止访问.htaccess文件，如果你的项目中包含.htaccess文件，
+    #部署在这个Nginx主机上，应该禁止访问该文件。
     # deny access to .htaccess files, if Apache's document root
     # concurs with nginx's one
     #
-    #location ~ /\.ht {
-    #    deny  all;
-    #}
+    location ~ /\.ht {
+        deny  all;
+    }
 }
 ```
 nginx 的默认工作线程数（在 /etc/nginx/nginx.conf 文件中指定的）是 1，让我们也来调整一下这个数字。通常来说我们创建的工作线程数应该和 CPU 核数相同。要查看您的 CPU 的核数，请运行下面这命令：
