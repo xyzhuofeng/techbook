@@ -5,7 +5,9 @@ by Hyper庆整理
 笔者的主机环境：CentOS7。
 php.ini配置文件在/etc/php.ini
 
-下列是部分默认设置
+具体参阅官网
+[http://php.net/manual/zh/ini.core.php](http://php.net/manual/zh/ini.core.php)
+下列是常用的部分默认设置
 
 文件上传开关
 `file_uploads = On`
