@@ -53,11 +53,9 @@ service iptables save
 ```
 ####测试 Nginx
 
-nginx 的默认文档要目录是 /usr/share/nginx/html。默认的 index.html 文件一定已经在这目录下了。让我们检测下是否可以访问到这个测试 web 页，输入 http://nginx的ip地址/ 访问。
-```
-//额……并没有图，反正就是Nginx的测试页面啦
-```
-如果您看到的是如上所示的页面的话，说明 nginx 已经正常启动。
+nginx 的默认文档要目录是 /usr/share/nginx/html。默认的 index.html 文件一定已经在这目录下了。让我们检测下是否可以访问到这个测试 web 页，通过主机的ip地址或已绑定的域名进行访问。
+
+如果您能看到Nginx的测试页面，说明 nginx 已经正常启动。
 
 ------
 
@@ -101,14 +99,14 @@ Reload privilege tables now? [Y/n] y              ----》重新加载授权信�
 
 PHP 是 LEMP 包中一个重要的组件，它负责把存储在 MariaDB/MySQL 服务器的数据取出生成动态内容。为了 LEMP 需要，您至少需要安装上 PHP-FPM 和 PHP-MySQL 两个模块。PHP-FPM（FastCGI 进程管理器）实现的是 nginx 服务器和生成动态内容的 PHP 应用程序的访问接口。PHP-MySQL 模块使 PHP 程序能访问 MariaDB/MySQL 数据库。
 
-安装 PHP 模块
+这里将安装php5.6.16，这是编写文档时最新的版本。
 
 在 CentOS 7 系统上:
 安装yum源
 ```
 rpm -Uvh https://mirror.webtatic.com/yum/el7/epel-release.rpm
 rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
-或其他源
+如果该yum源不可用，请使用其他源
 ```
 查看安装版本
 ```
@@ -119,9 +117,7 @@ yum list php*
 yum install php56w php56w-bcmath php56w-cli php56w-dba php56w-common php56w-devel php56w-fpm php56w-gd php56w-mbstring php56w-mcrypt php56w-mysqlnd php56w-opcache php56w-pdo php56w-pear php56w-pecl-apcu php56w-pecl-xdebug php56w-process php56w-xml
 ```
 在 CentOS 6 系统上:
-
 首先，您需要从仓库中安装 REMI 库（参见本指南），并安装软件包。
-
 ```
 yum --enablerepo=remi install php php-fpm php-mysql
 ```
@@ -129,7 +125,7 @@ yum --enablerepo=remi install php php-fpm php-mysql
 
 在 CentOS 6 系统中，安装 REMI仓库中最新的 php-mysql 模块时，MySQL 的服务端包和客户端包会被当做一部分依赖包而自动的更新。
 
-在 CentOS 6 和 CentOS 7 中，在安装 PHP 包的同时会把 Apache web 服务器（即 httpd）当做它的依赖包一起安装。这会跟 nginx web 服务器起冲突。这个问题会在下一节来讨论。
+在 CentOS 6 和 CentOS 7 中，在安装 PHP 包的同时会把 Apache web 服务器（即 httpd）当做它的依赖包一起安装。**这会跟 nginx web 服务器起冲突。**这个问题会在下一节来讨论。
 
 取决于您的使用情况，可以使用 yum 命令来定制您的 PHP 引擎，也许会想安装下面的任意一个扩展 PHP 模块包。
     php-mysqlnd: mysql扩展，5.4以上版本默认以mysqlnd替代
@@ -180,14 +176,18 @@ chkconfig httpd off
 ```
 ####配置 Nginx
 
-接下来，让我们配置 nginx 虚拟主机，使得 nginx 可以通过 PHP-FPM 来处理 PHP 的任务。用文本编辑器打开 /etc/nginx/conf.d/default.conf ，然后按如下所示修改。
+接下来，让我们配置 nginx 虚拟主机，使得 nginx 可以通过 PHP-FPM 来处理 PHP 的任务。用文本编辑器打开 /etc/nginx/conf.d/www.conf(该文件是不存在的，打开时将自动创建) ，然后按如下所示修改。
+（建议使用WinSCP等FTP工具来修改文件，图形界面操作更方便）
 ```
-vim /etc/nginx/conf.d/default.conf
+vim /etc/nginx/conf.d/www.conf
 server {
     listen       80;
     #你的域名
     server_name hyperqing.com www.hyperqing.com;
-
+    #网站根目录
+    root   /usr/share/nginx/html;
+    #开头添加index.php
+    index  index.php index.html index.htm;
     #charset koi8-r;
     #access_log  /var/log/nginx/log/host.access.log  main;
 
@@ -249,14 +249,16 @@ worker_processes 4;
 ```
 ####配置 PHP
 
-接下来，让我们对 PHP 的配置文件 /etc/php.ini 做自定义设置。更具体的就是在 /etc/php.ini 文件中增加以下两行，开头末尾都可以。
+接下来，让我们对 PHP 的配置文件 /etc/php.ini 做自定义设置。找到以下属性进行更改。
+如果已经被注释掉，则去除属性前面的`#`号。
 ```
 cgi.fix_pathinfo=0
 date.timezone = "PRC"
 ```
-为了安全起见，我们希望的是 PHP 解释器只是处理指定文件路径的文件任务，而不是预测搜索一些并不存在的文件任务。上面的第一行起的就是这个作用。（LCTT 译注：原文用的时区是“America/New York”，根据国内情况，应该用 PRC或 Asia 下的中国城市。）
+为了安全起见，我们希望的是 PHP 解释器只是处理指定文件路径的文件任务，而不是预测搜索一些并不存在的文件任务。上面的第一行起的就是这个作用。
 
-第二行定义的是 PHP 中日期/时间相关函数使用相关的默认时区。使用本指南，找出您所在的时区，并设置相应 date.timezone 的值。
+第二行定义的是 PHP 中日期/时间相关函数使用相关的默认时区。使用本指南，找出您所在的时区，并设置相应 date.timezone 的值。（LCTT 译注：原文用的时区是“America/New York”，根据国内情况，应该用 PRC或 Asia 下的中国城市。）
+
 
 ####测试 PHP
 
@@ -319,10 +321,21 @@ hostname hyperqing.com
 
 ----
 
+###CentOS7软件升级
+```
+yum -y update
+```
+----
+
 ###关于时区设置
 阿里云中已设置好时区，输入
 ```
 timedatectl
 ```
 检查即可。
+
+----
+
+###最后
+别忘了在阿里云控制台中备份镜像
 
