@@ -215,7 +215,7 @@ server {
 
     # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
     #
-    //下面这段location要开头的#取消注释
+    #下面这段location要开头的#取消注释
     location ~ \.php$ {
 	    #root原来是html;的要改成如下所示的绝对路径
 	    #下方fastcgi_param才能用$document_root表示
