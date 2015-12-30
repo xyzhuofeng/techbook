@@ -100,11 +100,23 @@ Reload privilege tables now? [Y/n] y              ----》重新加载授权信�
 ###第三步: PHP
 
 PHP 是 LEMP 包中一个重要的组件，它负责把存储在 MariaDB/MySQL 服务器的数据取出生成动态内容。为了 LEMP 需要，您至少需要安装上 PHP-FPM 和 PHP-MySQL 两个模块。PHP-FPM（FastCGI 进程管理器）实现的是 nginx 服务器和生成动态内容的 PHP 应用程序的访问接口。PHP-MySQL 模块使 PHP 程序能访问 MariaDB/MySQL 数据库。
+
 安装 PHP 模块
 
 在 CentOS 7 系统上:
+安装yum源
 ```
-yum install -y php php-fpm php-mysql php-pecl-apc php-xml php-dba php-mcrypt php-bcmath php-gd php-cli
+rpm -Uvh https://mirror.webtatic.com/yum/el7/epel-release.rpm
+rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
+或其他源
+```
+查看安装版本
+```
+yum list php*
+```
+确认存在php56w后安装
+```
+yum install php56w php56w-bcmath php56w-cli php56w-dba php56w-common php56w-devel php56w-fpm php56w-gd php56w-mbstring php56w-mcrypt php56w-mysqlnd php56w-opcache php56w-pdo php56w-pear php56w-pecl-apcu php56w-pecl-xdebug php56w-process php56w-xml
 ```
 在 CentOS 6 系统上:
 
@@ -120,7 +132,7 @@ yum --enablerepo=remi install php php-fpm php-mysql
 在 CentOS 6 和 CentOS 7 中，在安装 PHP 包的同时会把 Apache web 服务器（即 httpd）当做它的依赖包一起安装。这会跟 nginx web 服务器起冲突。这个问题会在下一节来讨论。
 
 取决于您的使用情况，可以使用 yum 命令来定制您的 PHP 引擎，也许会想安装下面的任意一个扩展 PHP 模块包。
-
+    php-mysqlnd: mysql扩展，5.4以上版本默认以mysqlnd替代
     php-cli: PHP 的命令行界面。从命令行里测试 PHP 时非常有用。
     php-gd: PHP 的图像处理支持。
     php-bcmath: PHP 的数学支持。
@@ -173,25 +185,28 @@ chkconfig httpd off
 vim /etc/nginx/conf.d/default.conf
 server {
     listen       80;
-    server_name  www.hyperqing.com;//你的域名
+    #你的域名
+    server_name hyperqing.com www.hyperqing.com;
 
     #charset koi8-r;
     #access_log  /var/log/nginx/log/host.access.log  main;
 
     location / {
         root   /usr/share/nginx/html;
-        index  index.php index.html index.htm;//开头添加index.php
+        #开头添加index.php
+        index  index.php index.html index.htm;
     }
-
+    #404页面
     #error_page  404              /404.html;
 
+    #50x页面
     # redirect server error pages to the static page /50x.html
     #
     error_page   500 502 503 504  /50x.html;
     location = /50x.html {
         root   /usr/share/nginx/html;
     }
-
+    #反向代理设置
     # proxy the PHP scripts to Apache listening on 127.0.0.1:80
     #
     #location ~ \.php$ {
@@ -202,14 +217,14 @@ server {
     #
     //下面这段location要开头的#取消注释
     location ~ \.php$ {
-	    //root原来是html;的要改成如下所示的绝对路径
-	    //下方fastcgi_param才能用$document_root表示
+	    #root原来是html;的要改成如下所示的绝对路径
+	    #下方fastcgi_param才能用$document_root表示
         root           /usr/share/nginx/html;
         fastcgi_pass   127.0.0.1:9000;
         fastcgi_index  index.php;
         include        fastcgi_params;
-        //原/script$fastcgi_script_name
-        // //script应换成网站目录绝对路径或$document_root
+        #原/script$fastcgi_script_name
+        # /script应换成网站目录绝对路径或$document_root
         fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
         
     }
