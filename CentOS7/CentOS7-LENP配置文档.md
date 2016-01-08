@@ -22,8 +22,8 @@ rpm --import http://nginx.org/keys/nginx_signing.key
 rpm -ivh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
 yum install nginx -y
 
-腾讯云的CentOS7会提示安装失败，原因缺少依赖libunwind.tar.gz，暂未解决
-已经使用Apache代替
+在腾讯云CentOS7中，如果提示安装失败，原因缺少依赖libunwind.tar.gz的话
+请重新执行上述两句，确保出现进度条和100%(###########[100%])
 ```
 在 CentOS 6 系统上:
 ```
@@ -119,7 +119,11 @@ yum list php*
 ```
 确认存在php56w后安装
 ```
-yum install php56w php56w-bcmath php56w-cli php56w-dba php56w-common php56w-devel php56w-fpm php56w-gd php56w-mbstring php56w-mcrypt php56w-mysqlnd php56w-opcache php56w-pdo php56w-pear php56w-pecl-apcu php56w-pecl-xdebug php56w-process php56w-xml
+yum install -y php56w php56w-bcmath php56w-cli php56w-dba php56w-common php56w-devel php56w-fpm php56w-gd php56w-mbstring php56w-mcrypt php56w-mysqlnd php56w-opcache php56w-pdo php56w-pear php56w-pecl-apcu php56w-pecl-xdebug php56w-process php56w-xml
+```
+PHP7
+```
+yum install -y php70w php70w-bcmath php70w-cli php70w-common php70w-dba php70w-devel php70w-fpm php70w-gd php70w-mbstring php70w-mcrypt php70w-mysqlnd php70w-opcache php70w-pdo php70w-pear php70w-process php70w-xml
 ```
 在 CentOS 6 系统上:
 首先，您需要从仓库中安装 REMI 库（参见本指南），并安装软件包。
