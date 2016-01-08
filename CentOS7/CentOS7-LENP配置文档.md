@@ -21,6 +21,9 @@
 rpm --import http://nginx.org/keys/nginx_signing.key
 rpm -ivh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
 yum install nginx -y
+
+腾讯云的CentOS7会提示安装失败，原因缺少依赖libunwind.tar.gz，暂未解决
+已经使用Apache代替
 ```
 在 CentOS 6 系统上:
 ```
@@ -106,6 +109,8 @@ PHP 是 LEMP 包中一个重要的组件，它负责把存储在 MariaDB/MySQL �
 ```
 rpm -Uvh https://mirror.webtatic.com/yum/el7/epel-release.rpm
 rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
+
+如果提示失败，请重试几次，成功会有进度条和100%字样(##############[100%])
 如果该yum源不可用，请使用其他源
 ```
 查看安装版本
