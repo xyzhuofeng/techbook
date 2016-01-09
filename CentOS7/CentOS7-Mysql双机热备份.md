@@ -3,8 +3,14 @@
 by HyperQing 整理
 
 笔者环境：
-主服务器：阿里云，CentOS7 x64，MariaDB 5.5
-从服务器：腾讯云，CentOS7 x64，MariaDB 5.5
+
+|主服务器|从服务器|
+|--|--|
+|阿里云|腾讯云|
+|CentOS7 x64|CentOS7 x64|
+|MariaDB 5.5|MariaDB 5.5|
+
+
 
 ###1 同步初期数据库
 
