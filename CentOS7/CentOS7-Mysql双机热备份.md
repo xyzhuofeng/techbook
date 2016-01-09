@@ -10,15 +10,6 @@ by HyperQing 整理
 | CentOS7 x64 | CentOS7 x64 |
 | MariaDB 5.5 | MariaDB 5.5 |
 
-
-| Item      |    Value | Qty  |
-| :-------- | --------:| :--: |
-| Computer  | 1600 USD |  5   |
-| Phone     |   12 USD |  12  |
-| Pipe      |    1 USD | 234  |
-
-
-
 ###1 同步初期数据库
 
 将主服务器需要同步的数据库内容进行备份一份，上传到从服务器上，保证始初时两服务器中数据库内容一致。
