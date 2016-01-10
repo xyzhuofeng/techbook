@@ -61,6 +61,18 @@ cookies值由几个部分的散列值（hash值）组成（使用SHA加密）：
 
 当进行自动登录时，cookies值和数据库保存的token进行比较，一致的情况下，自动登录成功。
 
+**防止XSS**
+```
+//在php.ini中，session.cookie_httponly = ture 来开启全局的Cookie的HttpOnly属性
+ini_set("session.cookie_httponly", 1);  //临时开启
+
+//或者setcookie()的第七个参数设置为true
+session_set_cookie_params(0, NULL, NULL, NULL, TRUE);
+
+//对于PHP5.1以前版本的PHP通过：
+header("Set-Cookie: hidden=value; httpOnly");
+```
+
 ----
 
 ###一些解释
@@ -79,7 +91,7 @@ setcookies(盗取得知的键名，盗取得到的密文);
 
 ----
 
-##额外需求
+###额外需求
 - 可加入登录日志数据表及其相关记录登录地功能，甚至发送邮件通知异常登录。
 - 如果用户的密码原文被盗，当异地登录时，应使用站内信通知其修改密码。
 - 提供登录日志查询功能等
