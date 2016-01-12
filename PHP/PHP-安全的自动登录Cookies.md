@@ -102,3 +102,7 @@ PHP中获取客户端IP
 ```
 $_SERVER['REMOTE_ADDR'];  //客户端IP地址
 ```
+ThinkPHP 3.2.3
+```
+get_client_ip();
+```
