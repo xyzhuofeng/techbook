@@ -1,4 +1,4 @@
-#php.ini常用配置
+# php.ini常用配置
 
 by Hyper庆整理
 
@@ -14,6 +14,7 @@ by Hyper庆整理
 
 缓存目录
 `upload_tmp_dir=`(默认为空)
+
 单个上传文件最大体积
 `upload_max_filesize = 2M`
 
