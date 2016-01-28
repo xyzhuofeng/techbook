@@ -237,6 +237,16 @@ server {
         fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
         
     }
+    #防盗链
+    location ~ .*\.(wma|wmv|asf|mp3|mmf|zip|rar|jpg|gif|png|jpeg|swf|flv)$ {
+        valid_referers none blocked *.hyperqing.com hyperqing.com;
+        if ($invalid_referer)
+        {
+           #rewrite ^/ http://www.hyperqing.com/error.html;
+           return 403;
+        }
+    }
+    
     #下面这段是禁止访问.htaccess文件，如果你的项目中包含.htaccess文件，
     #部署在这个Nginx主机上，应该禁止访问该文件。
     # deny access to .htaccess files, if Apache's document root
