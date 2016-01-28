@@ -105,9 +105,9 @@ PHP 是 LEMP 包中一个重要的组件，它负责把存储在 MariaDB/MySQL �
 这里将安装php5.6.16，这是编写文档时最新的版本。
 
 在 CentOS 7 系统上:
-安装yum源
+安装yum源（官网：https://webtatic.com/ 这里可以找到最新可用的源，这是一个专门提供最新版LAMP环境的源）
 ```
-rpm -Uvh https://mirror.webtatic.com/yum/el7/epel-release.rpm
+rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
 
 如果提示失败，请重试几次，成功会有进度条和100%字样(##############[100%])
