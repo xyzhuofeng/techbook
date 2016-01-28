@@ -189,21 +189,23 @@ chkconfig httpd off
 （建议使用WinSCP等FTP工具来修改文件，图形界面操作更方便）
 ```
 vim /etc/nginx/conf.d/www.conf
+```
+```
+www.conf文件内容：
 server {
     listen       80;
     #你的域名
     server_name hyperqing.com www.hyperqing.com;
     #网站根目录
-    root   /usr/share/nginx/html;
-    #开头添加index.php
+    #设置后下方fastcgi_param才能用$document_root表示
+    root   /home/www;
+    #开头添加index.php，默认页，如果只输入域名，则自动打开这个页面
     index  index.php index.html index.htm;
     #charset koi8-r;
-    #access_log  /var/log/nginx/log/host.access.log  main;
+    access_log  /home/wwwlog/host.access.log  main;
 
     location / {
-        root   /usr/share/nginx/html;
-        #开头添加index.php
-        index  index.php index.html index.htm;
+
     }
     #404页面
     #error_page  404              /404.html;
@@ -226,17 +228,14 @@ server {
     #
     #下面这段location要开头的#取消注释
     location ~ \.php$ {
-	    #root原来是html;的要改成如下所示的绝对路径
-	    #下方fastcgi_param才能用$document_root表示
-        root           /usr/share/nginx/html;
         fastcgi_pass   127.0.0.1:9000;
         fastcgi_index  index.php;
         include        fastcgi_params;
         #原/script$fastcgi_script_name
         # /script应换成网站目录绝对路径或$document_root
         fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
-        
     }
+
     #防盗链
     location ~ .*\.(wma|wmv|asf|mp3|mmf|zip|rar|jpg|gif|png|jpeg|swf|flv)$ {
         valid_referers none blocked *.hyperqing.com hyperqing.com;
@@ -246,7 +245,7 @@ server {
            return 403;
         }
     }
-    
+
     #下面这段是禁止访问.htaccess文件，如果你的项目中包含.htaccess文件，
     #部署在这个Nginx主机上，应该禁止访问该文件。
     # deny access to .htaccess files, if Apache's document root
