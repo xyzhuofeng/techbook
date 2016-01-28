@@ -123,7 +123,7 @@ yum install -y php56w php56w-bcmath php56w-cli php56w-dba php56w-common php56w-d
 ```
 PHP7 （参考:http://www.tuicool.com/articles/BvUv2aq）
 ```
-yum install -y php70w php70w-bcmath php70w-cli php70w-common php70w-dba php70w-devel php70w-fpm php70w-gd php70w-mbstring php70w-mcrypt php70w-mysqlnd php70w-opcache php70w-pdo php70w-pear php70w-process php70w-xml
+yum install -y php70w php70w-bcmath php70w-cli php70w-common php70w-dba php70w-devel php70w-fpm php70w-gd php70w-mbstring php70w-mcrypt php70w-mysqlnd php70w-opcache php70w-pdo php70w-pear php70w-pecl-apcu php70w-process php70w-xml
 ```
 在 CentOS 6 系统上:
 首先，您需要从仓库中安装 REMI 库（参见本指南），并安装软件包。
