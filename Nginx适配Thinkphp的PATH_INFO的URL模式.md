@@ -7,6 +7,8 @@ ThinkPHP支持通过PATHINFO和URL rewrite的方式来提供友好的URL，只�
 还有一个地方需要注意的是，Nginx配置文件里 if 和后面的括号之间要有一个空格，不然会报nginx: [emerg] unknown directive "if"错误。
 Nginx版本：1.8.0
 
+nginx php fpm紧急漏洞修复！cgi.fix_pathinfo导致文件类型错误解析漏洞
+http://www.iamle.com/archives/602.html
 PHP.ini配置中关于cgi.path_info的注释
 ```
 ; cgi.fix_pathinfo provides *real* PATH_INFO/PATH_TRANSLATED support for CGI.  PHP's
@@ -47,6 +49,8 @@ server {
 		fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
         #若要开启cgi.path_info功能，请添加以下正则去除特定URL
         #例如http://domain.com/img.jpg/index.php  如果img.jpg是代码且存在，则会执行
+        #据说该正则方法测试结果为二级目录就报错403错误了，不建议采用。不过，
+        #thinkphp项目几乎没有带点的文件夹名，估计情况好一点，反正不能用的时候就删了吧。
     	if ( $fastcgi_script_name ~ \..*\/.*php ) {
     	    return 403;
     	}
