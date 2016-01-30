@@ -6,6 +6,18 @@ ThinkPHP支持通过PATHINFO和URL rewrite的方式来提供友好的URL，只�
 
 还有一个地方需要注意的是，Nginx配置文件里 if 和后面的括号之间要有一个空格，不然会报nginx: [emerg] unknown directive "if"错误。
 Nginx版本：1.8.0
+
+PHP.ini配置中关于cgi.path_info的注释
+```
+; cgi.fix_pathinfo provides *real* PATH_INFO/PATH_TRANSLATED support for CGI.  PHP's
+; previous behaviour was to set PATH_TRANSLATED to SCRIPT_FILENAME, and to not grok
+; what PATH_INFO is.  For more information on PATH_INFO, see the cgi specs.  Setting
+; this to 1 will cause PHP CGI to fix its paths to conform to the spec.  A setting
+; of zero causes PHP to behave as before.  Default is 1.  You should fix your scripts
+; to use SCRIPT_FILENAME rather than PATH_TRANSLATED.
+; http://php.net/cgi.fix-pathinfo
+```
+
 ```
 server {
     listen       80;
@@ -22,19 +34,21 @@ server {
 	      rewrite ^(.*)$ /index.php/$1 last; #pathinfo模式 任选其一   
 	  }   
 	}   
-
-  
-	location ~ \.php {   
-		fastcgi_pass    127.0.0.1:9000;   
-		fastcgi_split_path_info ^(.+\.php)(.*)$;   
-		fastcgi_param PATH_INFO $fastcgi_path_info;   
-		fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;   
-		fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;   
-		include         fastcgi_params;   
+	
+	location ~ \.php {
+		fastcgi_pass    127.0.0.1:9000;
+		fastcgi_split_path_info ^(.+\.php)(.*)$;
+		fastcgi_param PATH_INFO $fastcgi_path_info;
+		#早期包含这句，但后来的部署发现，php配置中cgi.path_info=0时
+		#访问网站会出现Access denied.的错误
+		#如php配置中注释所言，该变量要开启cgi.path_info=1才能用
+		#fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
+		fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+		include         fastcgi_params;
 		fastcgi_connect_timeout 300;   
-		fastcgi_send_timeout 300;   
-		fastcgi_read_timeout 300;   
-	}   
+		fastcgi_send_timeout 300;
+		fastcgi_read_timeout 300;
+	}
 
     #error_page  404              /404.html;
 
