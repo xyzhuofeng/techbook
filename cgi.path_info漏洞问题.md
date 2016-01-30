@@ -1,6 +1,17 @@
 #cgi.path_info漏洞问题
 
-来源网络
+by HyperQing 整理
+
+PHP.ini配置中关于cgi.path_info的注释
+```
+; cgi.fix_pathinfo provides *real* PATH_INFO/PATH_TRANSLATED support for CGI.  PHP's
+; previous behaviour was to set PATH_TRANSLATED to SCRIPT_FILENAME, and to not grok
+; what PATH_INFO is.  For more information on PATH_INFO, see the cgi specs.  Setting
+; this to 1 will cause PHP CGI to fix its paths to conform to the spec.  A setting
+; of zero causes PHP to behave as before.  Default is 1.  You should fix your scripts
+; to use SCRIPT_FILENAME rather than PATH_TRANSLATED.
+; http://php.net/cgi.fix-pathinfo
+```
 
 比如, 有http://www.laruence.com/fake.jpg, 那么通过构造如下的URL, 就可以看到fake.jpg的二进制内容:
 ```
