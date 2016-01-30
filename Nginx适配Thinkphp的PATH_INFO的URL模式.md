@@ -37,12 +37,14 @@ server {
 	
 	location ~ \.php {
 		fastcgi_pass    127.0.0.1:9000;
+		fastcgi_index index.php;
 		fastcgi_split_path_info ^(.+\.php)(.*)$;
 		fastcgi_param PATH_INFO $fastcgi_path_info;
-		#早期包含这句，但后来的部署发现，php配置中cgi.path_info=0时
+		#早期使用PATH_TRANSLATED这句，但后来的部署发现，php配置中cgi.path_info=0时
 		#访问网站会出现Access denied.的错误
-		#如php配置中注释所言，该变量要开启cgi.path_info=1才能用
-		#fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
+		#如php配置中注释所言，该变量要开启cgi.path_info=1才能用（即保持默认配置）
+		#如需要禁用该配置，需要使用socket方法连接php-fpm，而非端口监听
+		fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
 		fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 		include         fastcgi_params;
 		fastcgi_connect_timeout 300;   
