@@ -45,6 +45,11 @@ server {
 		#如php配置中注释所言，该变量要开启cgi.path_info=1才能用（即保持默认配置）
 		#如需要禁用该配置，需要使用socket方法连接php-fpm，而非端口监听
 		fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
+        #若要开启cgi.path_info功能，请添加以下正则去除特定URL
+        #例如http://domain.com/img.jpg/index.php  如果img.jpg是代码且存在，则会执行
+    	if ( $fastcgi_script_name ~ \..*\/.*php ) {
+    	    return 403;
+    	}
 		fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 		include         fastcgi_params;
 		fastcgi_connect_timeout 300;   
