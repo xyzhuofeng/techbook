@@ -21,10 +21,10 @@
 rpm --import http://nginx.org/keys/nginx_signing.key
 rpm -ivh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
 yum install nginx -y
-
+```
 在腾讯云CentOS7中，如果提示安装失败，原因缺少依赖libunwind.tar.gz的话
 请重新执行上述两句，确保出现进度条和100%(###########[100%])
-```
+
 在 CentOS 6 系统上:
 ```
 rpm --import http://nginx.org/keys/nginx_signing.key
