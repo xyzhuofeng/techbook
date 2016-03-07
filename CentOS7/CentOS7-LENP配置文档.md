@@ -43,7 +43,9 @@ warning: /var/tmp/rpm-tmp.KttVHD: Header V4 RSA/SHA1 Signature, key ID 7bd9bf62:
 ```
 systemctl start nginx
 systemctl enable nginx
-//腾讯云、阿里云主机请省略以下两句，不需要设置（暂时未发现有何问题）
+```
+//腾讯云、阿里云主机请省略以下两句，他们的管理中心均自带安全组配置用户管理端口
+```
 firewall-cmd --zone=public --add-port=80/tcp --permanent
 firewall-cmd --reload
 ```
@@ -111,10 +113,10 @@ PHP 是 LEMP 包中一个重要的组件，它负责把存储在 MariaDB/MySQL �
 ```
 rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
-
+```
 如果提示失败，请重试几次，成功会有进度条和100%字样(##############[100%])
 如果该yum源不可用，请使用其他源
-```
+
 查看安装版本
 ```
 yum list php*
@@ -192,8 +194,8 @@ chkconfig httpd off
 ```
 vim /etc/nginx/conf.d/www.conf
 ```
-```
 www.conf文件内容：
+```
 server {
     listen       80;
     #你的域名
