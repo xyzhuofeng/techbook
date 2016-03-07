@@ -43,7 +43,7 @@ warning: /var/tmp/rpm-tmp.KttVHD: Header V4 RSA/SHA1 Signature, key ID 7bd9bf62:
 ```
 systemctl start nginx
 systemctl enable nginx
-//阿里云主机请省略以下两句，不需要设置
+//腾讯云、阿里云主机请省略以下两句，不需要设置（暂时未发现有何问题）
 firewall-cmd --zone=public --add-port=80/tcp --permanent
 firewall-cmd --reload
 ```
