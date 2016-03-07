@@ -125,7 +125,7 @@ yum list php*
 ```
 yum install -y php56w php56w-bcmath php56w-cli php56w-dba php56w-common php56w-devel php56w-fpm php56w-gd php56w-mbstring php56w-mcrypt php56w-mysqlnd php56w-opcache php56w-pdo php56w-pear php56w-pecl-apcu php56w-pecl-xdebug php56w-process php56w-xml
 ```
-PHP7 （参考:http://www.tuicool.com/articles/BvUv2aq）
+如果需要安装PHP7，请使用下面这段 （参考:http://www.tuicool.com/articles/BvUv2aq）
 ```
 yum install -y php70w php70w-bcmath php70w-cli php70w-common php70w-dba php70w-devel php70w-fpm php70w-gd php70w-mbstring php70w-mcrypt php70w-mysqlnd php70w-opcache php70w-pdo php70w-pear php70w-pecl-apcu php70w-process php70w-xml
 ```
