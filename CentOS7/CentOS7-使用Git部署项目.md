@@ -134,7 +134,7 @@ Already up-to-date.
 在阿里云使用git方案部署代码时，云盾服务会提示/.git/config会造成信息泄露，如果你使用的是nginx服务器软件
 请在网站配置文件中，加入这段：
 ```
-#禁止访问所有.开头的隐藏文件
+#禁止访问/.git目录
 location ^~ /.git {
     deny all;
 }
