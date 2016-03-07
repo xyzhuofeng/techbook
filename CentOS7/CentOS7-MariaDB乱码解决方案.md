@@ -7,8 +7,11 @@ by HyperQing 整理
 登录mysql，输入密码后按回车
 即使你安装了mariadb，在这里也照样可以用mysql命令
 ```
+执行命令：
 mysql -uroot -p
+系统提示：
 Enter Password:
+输入你的密码，回车继续
 ```
 输入语句查询MariaDB编码设置
 ```
