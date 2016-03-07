@@ -272,7 +272,7 @@ worker_processes 4;
 ####配置 PHP
 
 接下来，让我们对 PHP 的配置文件 /etc/php.ini 做自定义设置。找到以下属性进行更改。
-如果已经被注释掉，则去除属性前面的`#`号。
+如果已经被注释掉，则去除属性前面的`;`号。
 ```
 cgi.fix_pathinfo=0
 date.timezone = "PRC"
