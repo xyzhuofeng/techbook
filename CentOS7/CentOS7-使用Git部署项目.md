@@ -135,7 +135,7 @@ Already up-to-date.
 请在网站配置文件中，加入这段：
 ```
 #禁止访问所有.开头的隐藏文件
-location ~* /.* {
+location ^~ /.git {
     deny all;
 }
 ```
