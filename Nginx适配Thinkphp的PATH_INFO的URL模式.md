@@ -87,5 +87,9 @@ server {
     location ~ /\.ht {
         deny  all;
     }
+    #保护视图文件夹不被访问
+    location ^~ /Application/Home/View {
+        deny all;
+    }
 }
 ```
