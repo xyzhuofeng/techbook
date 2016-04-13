@@ -14,4 +14,6 @@ yum install php56w-pecl-redis
 
 systemctl restart php-fpm
 
+telnet 127.0.0.1 6379
+
 ```
