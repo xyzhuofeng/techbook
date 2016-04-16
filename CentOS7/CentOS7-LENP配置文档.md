@@ -124,7 +124,8 @@ yum list php*
 确认存在php56w后安装
 ```
 yum install -y php56w php56w-bcmath php56w-cli php56w-dba php56w-common php56w-devel php56w-fpm php56w-gd php56w-mbstring php56w-mcrypt php56w-mysqlnd php56w-opcache php56w-pdo php56w-pear php56w-pecl-apcu php56w-pecl-xdebug php56w-process php56w-xml
-
+```
+```
 // 如需使用redis扩展请使用这句
 yum install -y php56w php56w-bcmath php56w-cli php56w-dba php56w-common php56w-devel php56w-fpm php56w-gd php56w-mbstring php56w-mcrypt php56w-mysqlnd php56w-opcache php56w-pdo php56w-pear php56w-pecl-apcu php56w-pecl-xdebug php56w-process php56w-xml php56w-pecl-redis
 ```
