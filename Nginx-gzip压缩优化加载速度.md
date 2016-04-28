@@ -14,3 +14,5 @@
     http://www.webkaka.com/blog/archives/how-to-set-gzip-for-js-in-Nginx.html
     专业网站测速平台
     http://pagespeed.webkaka.com
+    站长工具
+    http://tool.chinaz.com/Gzips
