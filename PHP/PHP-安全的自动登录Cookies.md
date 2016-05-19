@@ -1,4 +1,4 @@
-# PHP-安全的自动登录Cookies
+# PHP-安全的自动登录Cookies解决方案
 
 by HyperQing
 
