@@ -17,7 +17,10 @@
   curl_setopt($ccc,CURLOPT_RETURNTRANSFER,true);
   // post方式传输
   curl_setopt($ccc, CURLOPT_POST, true);
+  // post数据，默认为字符串
+  // 传递一个数组到CURLOPT_POSTFIELDS，cURL会把数据编码成 multipart/form-data，而然传递一个URL-encoded字符串时，数据会被编码成 application/x-www-form-urlencoded。
   curl_setopt($ccc, CURLOPT_POSTFIELDS, $data);
+  // 设置header
   curl_setopt($ccc, CURLOPT_HTTPHEADER, $header);
   // 必须有UA信息
   curl_setopt ($ccc, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
