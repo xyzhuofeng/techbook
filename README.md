@@ -8,4 +8,5 @@
 - php curl获取天气
 - python快速学习
 - xml快速学习
+- Git技术
 - 其他零散技术
