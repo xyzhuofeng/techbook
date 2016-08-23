@@ -32,5 +32,29 @@ DESCRISE my_table;
 SHOW COLOMNS FORM my_table;
 ```
 
+显示服务器状态
+```sql
+SHOW STATUS;
+```
 
+显示创建数据库和创建表时的语句
+```sql
+SHOW CREATE DATABASE;
+SHOW CREATE TABLE;
+```
 
+显示授予用户的安全权限
+```sql
+SHOW GRANTS;
+```
+
+显示服务器的错误或警告信息
+```sql
+SHOW ERRORS;
+SHOW WARNINGS;
+```
+
+查看有关SHOW的更多帮助
+```sql
+HELP SHOW;
+```
