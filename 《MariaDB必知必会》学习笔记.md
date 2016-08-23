@@ -58,3 +58,20 @@ SHOW WARNINGS;
 ```sql
 HELP SHOW;
 ```
+
+## 检索数据
+
+只返回不同的（唯一的）行
+```sql
+SELECT DISTINCT name FROM my_table;
+```
+>**不能部分使用DISTINCT** DISTINCT关键字应用于所有列，而不仅仅应用于其后的一列如果指定 `SELECT DISTINCT name ,id FROM my_table;` ，会检索所有的行，除非指定两列都不同。
+
+
+注释
+```sql
+SELECT 3*2;  -- 这是一个注释，该语句结果为6
+# 这是一个注释，以#开头让整行都成为注释
+/*这是一个
+多行注释*/
+```
