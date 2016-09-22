@@ -33,3 +33,21 @@
 <%!=yourvalue %>
 ```
 >不加分号
+
+
+## 动作元素
+```HTML
+<jsp:include>先处理再包含
+<jsp:param>参数
+<jso:forward>服务器内部无条件跳转
+```
+
+## 内置对象
+
+四类内置对象
+
+1. `Servlet` ，包括 `page` , `config` 对象。
+2. `IO` ,包括 `out` , `request` , `response` 对象。
+3. `Context` ,包括  `session` , `application` , `pageContext` 对象。
+4. `Error` ,包括  `exception` 对象。
+
