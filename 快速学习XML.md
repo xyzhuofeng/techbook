@@ -1,5 +1,9 @@
 # 快速学习XML
+
+>by HyperQing 20160
+
 [TOC]
+
 ## XML文档格式
 
 ### 格式良好的和有效的XML
