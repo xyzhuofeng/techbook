@@ -51,3 +51,48 @@
 3. `Context` ,包括  `session` , `application` , `pageContext` 对象。
 4. `Error` ,包括  `exception` 对象。
 
+### out
+
+输出和缓冲区处理
+
+### request
+本次请求相关信息，GET、POST
+
+### response
+设置响应头header（`refresh` , `location` 302 重定向），操作输出流，状态码(4xx , 5xx)。
+```
+response.sendRedirect(URI);// 302重定向
+```
+
+### 文件上传下载
+
+文件上传，在 `servlet` 中通过 `request` 获取输入流。
+文件下载，输出流。
+
+### cookie
+
+`request` 可以 `getCookies()` 。
+`response` 可以 `setCookie()` 。
+
+### session
+
+类似 PHP 的 `$_SESSION` 。
+
+### application
+
+读写全局属性，获取 `servlet` 消息。`getServletContext()` 代替 `application` 对象。
+
+### page
+
+在jsp中使用servlet定义的方法。
+
+### pageContext
+获取上面提到的四类对象，可读写属性。属性可设置4种保存范围：page,request,session,application。
+
+### config
+获取初始化参数。
+
+### exception
+异常对象
+
+
