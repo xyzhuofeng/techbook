@@ -1,0 +1,65 @@
+# 高级文件下载实现
+
+[TOC]
+
+## 需求背景
+
+产品中有如下需求：
+
+- 文件上传后，只有特定人群可以下载，而其他人无法下载。
+- 文件在下载时还是原文件名（如：演讲稿.doc），而非为了安全而改变后的文件名（如：57f60bfaade71.doc，用 `uniqid()` 等方法生成）。
+- 文件不会被直接访问，即 `http://xxx.com/xxx.doc` 这样访问是无效的。如果可以直接访问，意味着文件无法被正确保护。
+- 文件下载时不会呈现文件存放路径。浏览器 `F12` 调试窗口也不会体现出来。防止用户通过猜测文件名访问到不应访问的文件。
+- Nginx 服务器。
+- 上传的文件应当安全存放，不可被执行。
+- 上传的文件名支持中文。
+
+## 参考资料
+
+为了满足上述需求，网上找来一些资料，大体都是一篇只讲一个问题的解决方法，并没找到有系统的完整的解决方案。
+在此贴出参考过的资料。下一章将针对上述需求给出完整的解决方案。
+
+首先是基本原理。
+
+>PHP 实现文件下载 - 慕课网
+>http://www.imooc.com/video/4596
+
+然后是改进 PHP 文件下载，这篇讲的是使用 Apache 本身的功能，使得 Apache 直接返回文件给客户端，而不需要读入到 PHP 中再返回。
+
+>让 PHP 更快的提供文件下载
+>http://www.laruence.com/2012/05/02/2613.html
+
+既然 Apache 中实现了该功能，不难想像 Nginx 也有类似功能。
+
+>php+nginx 做下载服务器配置 X-Accel-Redirect
+>http://www.phpweblog.net/phpbaby/archive/2012/07/10/7709.html
+
+上面这篇文章提到禁止直接访问目录，只允许内部访问的做法，又找到相关介绍。
+
+>Nginx模块参考手册：HTTP核心模块 
+>http://blog.chinaunix.net/xmlrpc.php?r=blog/article&uid=17238776&id=2982697
+
+关于这个做法，下面给出文章的摘要。
+```
+internal
+
+语法：internal 
+默认值：no 
+使用字段： location 
+internal指令指定某个location只能被“内部的”请求调用，外部的调用请求会返回”Not found” (404)
+
+“内部的”是指下列类型：
+指令error_page重定向的请求。 
+ngx_http_ssi_module模块中使用include virtual指令创建的某些子请求。 
+ngx_http_rewrite_module模块中使用rewrite指令修改的请求。 
+
+一个防止错误页面被用户直接访问的例子：
+
+error_page 404 /404.html;
+location  /404.html {
+  internal;
+}
+```
+
+## 解决方案
+
