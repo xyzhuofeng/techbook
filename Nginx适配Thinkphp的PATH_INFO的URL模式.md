@@ -93,3 +93,18 @@ server {
     }
 }
 ```
+
+```
+location ~ \.php {
+	fastcgi_pass    127.0.0.1:9000;
+	fastcgi_index index.php;
+	fastcgi_split_path_info ^(.+\.php)(.*)$;
+	fastcgi_param HELLO $fastcgi_path_info;
+	fastcgi_param PATH_INFO $fastcgi_path_info;
+	fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+	include fastcgi_params;
+	fastcgi_connect_timeout 60;
+	fastcgi_send_timeout 300;
+	fastcgi_read_timeout 300;
+}
+```
