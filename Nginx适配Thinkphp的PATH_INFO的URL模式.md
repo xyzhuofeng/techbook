@@ -32,8 +32,7 @@ server {
     
 	location / {   
 	 if (!-e $request_filename){   
-	      #rewrite ^(.*)$ /index.php?s=/$1 last; #rewrite模式   
-	      rewrite ^(.*)$ /index.php/$1 last; #pathinfo模式 任选其一   
+	      rewrite ^(.*)$ /index.php$1 last;
 	  }   
 	}   
 	
