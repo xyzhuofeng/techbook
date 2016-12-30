@@ -10,3 +10,9 @@ HyperQing 整理
 
 REST Client
 简易的postman代替工具：按两下`Shift`，查找`REST`，找到`Test RESTFul Web Service`启动即可。
+
+Hippie Completion
+自动补全的模式，会选择当前编辑器中适合的单词直接拿过来补全。
+`Alt+/`(Slash，正斜杠)和`Alt+Shift+/`。
+
+`Alt+Enter`：可以调整字符串的呈现方案，例如将一个普通字符串识别为`json`，那么会以`json`方式检查语法和高亮显示。还有各种惊喜。
