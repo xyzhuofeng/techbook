@@ -100,6 +100,15 @@ $ git pull origin
 // 从远程仓库origin获取和合并指定分支更新
 $ git push origin master:master
 ```
+
+- 设置跟踪分支
+
+PHPStorm等软件支持一键更新项目，这需要设置本地分支与远程分支的跟踪对应关系。
+下列语句表示，本地的master分支对应远程的origin/master分支。
+```
+git branch --set-upstream master origin/master
+```
+
 - **推送更新**
 ```
 $ git push <远程主机名> <本地分支名>:<远程分支名>
