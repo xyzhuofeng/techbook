@@ -115,7 +115,8 @@ git branch --set-upstream-to origin/master master
 ```
 删除已存在的关联，如果操作未关联的分支，将会报错`fatal: Branch 'master' has no upstream information`
 ```bash
-git branch --unset-upstream origin/master master
+git branch --unset-upstream origin/master
+git branch --unset-upstream master
 ```
 
 - **推送更新**
