@@ -101,12 +101,22 @@ $ git pull origin
 $ git push origin master:master
 ```
 
-- **设置跟踪分支**
+- **设置关联分支**
 
-PHPStorm等软件支持一键更新项目，这需要设置本地分支与远程分支的跟踪对应关系。
-下列语句表示，本地的master分支对应远程的origin/master分支。
+PHPStorm等IDE支持一键更新项目，这需要设置本地分支与远程分支的关联对应关系。
+下列语句表示，本地的master分支关联对应远程的origin/master分支。
+
 ```
 git branch --set-upstream master origin/master
+```
+【更新】上面这句被提示不赞成使用并将被移除，故换成下面这句。
+```
+git branch --set-upstream-to origin/master
+```
+删除已存在的关联，如果操作未关联的分支，将会报错`fatal: Branch 'master' has no upstream information`
+```
+git branch --unset-upstream master
+git branch --unset-upstream origin/master
 ```
 
 - **推送更新**
