@@ -101,7 +101,7 @@ $ git pull origin
 $ git push origin master:master
 ```
 
-- 设置跟踪分支
+- **设置跟踪分支**
 
 PHPStorm等软件支持一键更新项目，这需要设置本地分支与远程分支的跟踪对应关系。
 下列语句表示，本地的master分支对应远程的origin/master分支。
