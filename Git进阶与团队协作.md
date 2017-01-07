@@ -111,12 +111,11 @@ git branch --set-upstream master origin/master
 ```
 【更新】上面这句被提示不赞成使用并将被移除，故换成下面这句。
 ```bash
-git branch --set-upstream-to origin/master
+git branch --set-upstream-to origin/master master
 ```
 删除已存在的关联，如果操作未关联的分支，将会报错`fatal: Branch 'master' has no upstream information`
 ```bash
-git branch --unset-upstream master
-git branch --unset-upstream origin/master
+git branch --unset-upstream origin/master master
 ```
 
 - **推送更新**
