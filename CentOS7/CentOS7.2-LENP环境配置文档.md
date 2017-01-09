@@ -122,16 +122,12 @@ yum list php*
 ```
 yum install -y php56w php56w-bcmath php56w-cli php56w-common php56w-fpm php56w-gd php56w-mbstring php56w-mcrypt php56w-mysqlnd php56w-opcache php56w-pdo php56w-pear php56w-pecl-apcu php56w-pecl-xdebug php56w-process php56w-xml
 ```
+如果需要安装PHP7，请使用下面这段
 ```
-// 如需使用redis扩展请使用这句
-yum install -y php56w php56w-bcmath php56w-cli php56w-common php56w-fpm php56w-gd php56w-mbstring php56w-mcrypt php56w-mysqlnd php56w-opcache php56w-pdo php56w-pear php56w-pecl-apcu php56w-pecl-xdebug php56w-process php56w-xml php56w-pecl-redis
-```
-如果需要安装PHP7，请使用下面这段 （参考:http://www.tuicool.com/articles/BvUv2aq）
-```
-yum install -y php70w php70w-bcmath php70w-cli php70w-common php70w-fpm php70w-gd php70w-mbstring php70w-mcrypt php70w-mysqlnd php70w-opcache php70w-pdo php70w-pear php70w-pecl-apcu php70w-process php70w-xml
+yum install -y php70w php70w-bcmath php70w-cli php70w-common php70w-fpm php70w-gd php70w-mbstring php70w-mcrypt php70w-mysqlnd php70w-opcache php70w-pdo php70w-process php70w-xml
 ```
 
-在 CentOS 6 和 CentOS 7 中，在安装 PHP 包的同时会把 Apache web 服务器（即 httpd）当做它的依赖包一起安装。**这会Nginx 服务器起冲突。**这个问题会在下一节来讨论。
+在 CentOS 7 中，在安装 PHP 包的同时会把 Apache web 服务器（即 httpd）当做它的依赖包一起安装。**这会Nginx 服务器起冲突。**这个问题会在下一节来讨论。
 
 取决于您的使用情况，可以使用 yum 命令来定制您的 PHP 引擎，也许会想安装下面的任意一个扩展 PHP 模块包。
 
@@ -147,36 +143,31 @@ yum install -y php70w php70w-bcmath php70w-cli php70w-common php70w-fpm php70w-g
 - php-imap：邮件相关扩展。http://php.net/manual/zh/book.imap.php
 - php-intervase：
 - php-intl：Internationalization Functions，国际化功能。http://php.net/manual/zh/book.intl.php
-- php-ldap
+- php-ldap：Lightweight Directory Access Protocol，轻量级目录权限协议。
 - php-mbstring：UTF8多字节字符串扩展库（例如：转码或计算UTF8字符串长度）http://php.net/manual/zh/book.mbstring.php
 - php-mcrypt：加密支持扩展库，支持20多种加密算法和8种加密模式 ，例如 DES、Blowfish、CBC、 CFB、ECB ciphers 、rc2等。http://php.net/manual/zh/book.mcrypt.php
 - php-mysql：淘汰的mysql扩展。从 PHP 5.5.0 起这个扩展已经被废弃，并且从 PHP 7.0.0. 开始被移除。作为替代，可以使用 mysqli 或者 PDO_MySQL 扩展代替。http://php.net/manual/zh/intro.mysql.php
 - php-mysqlnd：Mysql Native驱动，用C写的PHP扩展，5.3开始使用。 http://php.net/manual/zh/intro.mysqlnd.php
 - php-odbc：用于连接Windows的数据源的数据库抽象层。例如：Microsoft Access数据库。http://php.net/manual/zh/intro.uodbc.php
-- php-opcache：
+- php-opcache：OPcache 通过将 PHP 脚本预编译的字节码存储到共享内存中来提升 PHP 的性能， 存储预编译字节码的好处就是 省去了每次加载和解析 PHP 脚本的开销。http://php.net/manual/zh/book.opcache.php
 - php-pdo：PHP数据对象，提供了一个 数据访问 抽象层，不管使用哪种数据库，都可以用相同的函数（方法）来查询和获取数据。http://php.net/manual/zh/pdo.drivers.php
-- php-pdo_dblib
-- php-pear.noarch
-- php-pecl-apcu
-- php-pecl-apcu-devel
-- php-pecl-mongodb
-- php-pecl-redis
-- php-pecl-xdebug
-- php-pgsql
-- php-phpdbg
-- php-process
-- php-pspell
-- php-recode
-- php-snmp
-- php-soap
-- php-tidy
-- php-xml
-- php-xmlrpc
-
-- php-mcrypt: PHP 的加密算法支持 (例如 DES、Blowfish、CBC、 CFB、ECB ciphers 等)。
-- php-xml: PHP 的 XML 解析和处理支持。
-- php-dba: PHP 的数据抽象层支持。
-- php-pecl-apc: PHP 加速器/缓存支持。
+- php-pdo_dblib：用于连接Microsoft SQL Server数据库的扩展。
+- php-pear.noarch：PECL 是通过 PEAR 打包系统做出来的 PHP 扩展库仓库。http://www.php.net/manual/zh/install.pecl.php
+- php-pecl-apcu：来自 PECL 仓库的 ACPu 扩展，PHP 字节码和对象缓存器。在 PHP 5.2 版本后可使用OPcache代替。http://www.php.net/apcu https://bbs.aliyun.com/read/275941.html
+- php-pecl-apcu-devel：上述ACPu的开发包，用于编译。
+- php-pecl-mongodb：来自 PECL 仓库的 MongoDB 扩展。
+- php-pecl-redis：来自 PECL 仓库的 Redis 扩展。
+- php-pecl-xdebug：来自 PECL 仓库的 XDebug 扩展。强大的调试工具，在windows下结合phpstorm调试下过拔群，生产环境不推荐安装。
+- php-pgsql：PostgreSQL 扩展。
+- php-phpdbg：PHP Debugger扩展。PHPDBG是一个PHP的SAPI模块，可以在不用修改代码和不影响性能的情况下控制PHP的运行环境。PHPDBG的目标是成为一个轻量级、强大、易用的PHP调试平台。可以在PHP5.4和之上版本中使用。在php5.6和之上版本将内部集成。生产环境不推荐安装。
+- php-process：
+- php-pspell：这个功能能够检查一个单词的拼写和提供一些建议。属于国际化与字符编码支持。http://php.net/manual/zh/book.pspell.php
+- php-recode：包含一个GNU Recode libary的接口。这个库可以使文件在多编码字符集和编码编码之间转换。属于国际化与字符编码支持。此扩展在 Windows 平台上不可用。 http://php.net/manual/zh/intro.recode.php
+- php-snmp：SNMP扩展提供一个非常简单且容易有效的工具集，通过SNMP协议（简单网络管理协议）来管理远程设备。
+- php-soap：SOAP，Web 服务。 http://php.net/manual/zh/book.soap.php
+- php-tidy：用于清理HTML代码的，生成干净的符合W3C标准的HTML代码，支持HTML,XHTML,XML。纠错和过滤DOM文档。http://www.jb51.net/article/9350.htm 
+- php-xml：XML 解析器。http://php.net/manual/zh/book.xml.php http://php.net/manual/zh/book.tidy.php
+- php-xmlrpc：XML-RPC，Web 服务。（此扩展是实验性 的。 此扩展的表象，包括其函数名称以及其他此扩展的相关文档都可能在未来的 PHP 发布版本中未通知就被修改。使用本扩展风险自担 。）http://php.net/manual/zh/intro.xmlrpc.php
 
 安装时，要查看可用的 PHP 模块的完整列表的话，可以运行：
 ```
