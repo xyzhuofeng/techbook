@@ -120,28 +120,64 @@ yum list php*
 ```
 确认存在php56w后安装
 ```
-yum install -y php56w php56w-bcmath php56w-cli php56w-dba php56w-common php56w-devel php56w-fpm php56w-gd php56w-mbstring php56w-mcrypt php56w-mysqlnd php56w-opcache php56w-pdo php56w-pear php56w-pecl-apcu php56w-pecl-xdebug php56w-process php56w-xml
+yum install -y php56w php56w-bcmath php56w-cli php56w-common php56w-fpm php56w-gd php56w-mbstring php56w-mcrypt php56w-mysqlnd php56w-opcache php56w-pdo php56w-pear php56w-pecl-apcu php56w-pecl-xdebug php56w-process php56w-xml
 ```
 ```
 // 如需使用redis扩展请使用这句
-yum install -y php56w php56w-bcmath php56w-cli php56w-dba php56w-common php56w-devel php56w-fpm php56w-gd php56w-mbstring php56w-mcrypt php56w-mysqlnd php56w-opcache php56w-pdo php56w-pear php56w-pecl-apcu php56w-pecl-xdebug php56w-process php56w-xml php56w-pecl-redis
+yum install -y php56w php56w-bcmath php56w-cli php56w-common php56w-fpm php56w-gd php56w-mbstring php56w-mcrypt php56w-mysqlnd php56w-opcache php56w-pdo php56w-pear php56w-pecl-apcu php56w-pecl-xdebug php56w-process php56w-xml php56w-pecl-redis
 ```
 如果需要安装PHP7，请使用下面这段 （参考:http://www.tuicool.com/articles/BvUv2aq）
 ```
-yum install -y php70w php70w-bcmath php70w-cli php70w-common php70w-dba php70w-devel php70w-fpm php70w-gd php70w-mbstring php70w-mcrypt php70w-mysqlnd php70w-opcache php70w-pdo php70w-pear php70w-pecl-apcu php70w-process php70w-xml
+yum install -y php70w php70w-bcmath php70w-cli php70w-common php70w-fpm php70w-gd php70w-mbstring php70w-mcrypt php70w-mysqlnd php70w-opcache php70w-pdo php70w-pear php70w-pecl-apcu php70w-process php70w-xml
 ```
 
 在 CentOS 6 和 CentOS 7 中，在安装 PHP 包的同时会把 Apache web 服务器（即 httpd）当做它的依赖包一起安装。**这会Nginx 服务器起冲突。**这个问题会在下一节来讨论。
 
 取决于您的使用情况，可以使用 yum 命令来定制您的 PHP 引擎，也许会想安装下面的任意一个扩展 PHP 模块包。
-- php-mysqlnd: mysql扩展，5.4以上版本默认以mysqlnd替代
-- php-cli: PHP 的命令行界面。从命令行里测试 PHP 时非常有用。
-- php-gd: PHP 的图像处理支持。
-- php-bcmath: PHP 的数学支持。
+
+- php-bcmath：任意精度数学 http://www.php.net/manual/zh/book.bc.php
+- php-cli：PHP 的命令行模式。从命令行里测试 PHP 时非常有用。
+- php-common：
+- php-dba：数据库抽象层。（用于Berkeley DB (伯克利数据库)）
+- php-devel：php开发包。一般手动编译php扩展的时候用，如果不需要编译就用不到。
+- php-embedded：Embedded（内嵌）实现。与php-fpm相对。常用的有5种形式，CLI/CGI（命令行）、Multiprocess（多进程）、Multithreaded（多线程）、FastCGI和Embedded（内嵌）。 http://blog.csdn.net/longxibendi/article/details/39587647
+- php-enchant：Enchant spelling library，各种拼写库的抽象层。国际化与字符编码支持的其中一样。http://php.net/manual/zh/book.enchant.php
+- php-fpm：FastCGI 进程管理器。http://php.net/manual/zh/book.fpm.php
+- php-gd：PHP 的图像处理支持。http://php.net/manual/zh/book.image.php
+- php-imap：邮件相关扩展。http://php.net/manual/zh/book.imap.php
+- php-intervase：
+- php-intl：Internationalization Functions，国际化功能。http://php.net/manual/zh/book.intl.php
+- php-ldap
+- php-mbstring：UTF8多字节字符串扩展库（例如：转码或计算UTF8字符串长度）http://php.net/manual/zh/book.mbstring.php
+- php-mcrypt：加密支持扩展库，支持20多种加密算法和8种加密模式 ，例如 DES、Blowfish、CBC、 CFB、ECB ciphers 、rc2等。http://php.net/manual/zh/book.mcrypt.php
+- php-mysql：淘汰的mysql扩展。从 PHP 5.5.0 起这个扩展已经被废弃，并且从 PHP 7.0.0. 开始被移除。作为替代，可以使用 mysqli 或者 PDO_MySQL 扩展代替。http://php.net/manual/zh/intro.mysql.php
+- php-mysqlnd：Mysql Native驱动，用C写的PHP扩展，5.3开始使用。 http://php.net/manual/zh/intro.mysqlnd.php
+- php-odbc：用于连接Windows的数据源的数据库抽象层。例如：Microsoft Access数据库。http://php.net/manual/zh/intro.uodbc.php
+- php-opcache：
+- php-pdo：PHP数据对象，提供了一个 数据访问 抽象层，不管使用哪种数据库，都可以用相同的函数（方法）来查询和获取数据。http://php.net/manual/zh/pdo.drivers.php
+- php-pdo_dblib
+- php-pear.noarch
+- php-pecl-apcu
+- php-pecl-apcu-devel
+- php-pecl-mongodb
+- php-pecl-redis
+- php-pecl-xdebug
+- php-pgsql
+- php-phpdbg
+- php-process
+- php-pspell
+- php-recode
+- php-snmp
+- php-soap
+- php-tidy
+- php-xml
+- php-xmlrpc
+
 - php-mcrypt: PHP 的加密算法支持 (例如 DES、Blowfish、CBC、 CFB、ECB ciphers 等)。
 - php-xml: PHP 的 XML 解析和处理支持。
 - php-dba: PHP 的数据抽象层支持。
 - php-pecl-apc: PHP 加速器/缓存支持。
+
 安装时，要查看可用的 PHP 模块的完整列表的话，可以运行：
 ```
 yum search php- 
