@@ -72,6 +72,7 @@ nginx 的默认文档要目录是 `/usr/share/nginx/html`。默认的 `index.htm
 
 >You should now put your content in a location of your choice and edit the root configuration directive in the nginx configuration file /etc/nginx/nginx.conf.
 
+**至于为什么会写着“Welcome to nginx on Fedora!”，因为阿里云、腾讯云的yum源是epel，epel是由Fedora维护的，所以你懂的，这并不影响使用。（手动修改yum源为Nginx官方源就没这个问题了。）**
 
 ------
 
