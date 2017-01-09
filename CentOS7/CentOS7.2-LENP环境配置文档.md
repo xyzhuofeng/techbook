@@ -1,6 +1,6 @@
 # CentOS 7.2 LENP环境配置文档
 
-by HyperQing 整理和实践检验（仅检验过CentOS 7.2，CentOS 6未检验）2017-01-09
+by HyperQing 整理和实践检验 2017-01-09
 
 [TOC]
 
@@ -11,37 +11,24 @@ by HyperQing 整理和实践检验（仅检验过CentOS 7.2，CentOS 6未检验�
 >（LCTT 译注：为何采用 LEMP 而不是 LNMP 的缩写？据 https://lemp.io/ 的解释：Nginx 的发音是 Engine-X，重要的发音而不是首字母，而且 LEMP 实际上是可读的，而 LNMP 看起来只是字母表。）
 
 
-这篇文章里，我们示范如何在 CentOS 操作平台上安装 LEMP 包。我们安装的目标是 CentOS 7 和 CentOS 6 两个操作平台，如有必要会指出它们的不同。
+这篇文章里，我们示范如何在 CentOS 操作平台上安装 LEMP 包。我们安装的目标是 CentOS 7.2。
 
 ------
 
-###第一步: Nginx
+## 第一步: Nginx
 
 让我们在 CentOS 上安装 Nginx 作为第一步，然后对它作些基本的配置，比如使其能引导时启动和对防火墙做个性化设置。
-####安装 Nginx
+### 安装 Nginx
 
 yum中已经有Nginx软件，安装即可。
-
-在 CentOS 7 系统上:
 ```
 yum install nginx -y
 ```
 
-在 CentOS 6 系统上:
-```
-rpm --import http://nginx.org/keys/nginx_signing.key
-rpm -ivh http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm
-yum install nginx -y
-```
-注意在安装 nginx RPM 包之前，如果您没有导入 nginx 的官方 GPG 密钥的话，会出一如下所示的警告:
-```
-warning: /var/tmp/rpm-tmp.KttVHD: Header V4 RSA/SHA1 Signature, key ID 7bd9bf62: NOKEY
-```
-####启动 Nginx
+### 启动 Nginx
 
 安装完成后，nginx 是不会自动启动的。现在让我们来启动它吧，还要做些配置让其可以随着操作系统启动而启动。我们也需要在防火墙里打开 TCP/80 端口，以使得可以远程访问 nginx 的 web 服务。所有这些操作、设置都只需要输入如下命令就可实现。
 
-在 CentOS 7 系统上:
 ```
 systemctl start nginx
 systemctl enable nginx
@@ -51,14 +38,7 @@ systemctl enable nginx
 firewall-cmd --zone=public --add-port=80/tcp --permanent
 firewall-cmd --reload
 ```
-在 CentOS 6 系统上:
-```
-service nginx start
-chkconfig nginx on
-iptables -I INPUT -p tcp -m tcp --dport 80 -j ACCEPT
-service iptables save
-```
-####测试 Nginx
+### 测试 Nginx
 
 nginx 的默认文档要目录是 `/usr/share/nginx/html`。默认的 `index.html` 文件一定已经在这目录下了。让我们检测下是否可以访问到这个测试 web 页，通过主机的ip地址或已绑定的域名进行访问。
 
@@ -76,60 +56,65 @@ nginx 的默认文档要目录是 `/usr/share/nginx/html`。默认的 `index.htm
 
 ------
 
-###第二步: MariaDB/MySQL
+### 第二步: MariaDB
 
-下一步就是安装 LEMP 包的数据库组件。CentOS/RHEL 6 或早期的版本中提供的是 MySQL 的服务器/客户端安装包，但 CentOS/RHEL 7 已使用了 MariaDB 替代了默认的 MySQL。作为 MySQL 的简单替代品，MariaDB 保证了与 MySQL 的 API 和命令行用法方面最大的兼容性。下面是关于怎么在 CentOS 上安装和配置 MaraDB/MySQL 的操作示例。
+下一步就是安装 LEMP 包的数据库组件。CentOS/RHEL 6 或早期的版本中提供的是 MySQL 的服务器/客户端安装包，但 CentOS/RHEL 7 已使用了 MariaDB 替代了默认的 MySQL。作为 MySQL 的替代品，MariaDB 保证了与 MySQL 的 API 和命令行用法方面最大的兼容性。下面是关于怎么在 CentOS 上安装和配置 MariaDB的操作示例。
 
-在 CentOS 7 系统上:
-
-如下所示操作来安装 MariaDB 服务/客户端包以及启动 MariaDB 服务。
+安装 MariaDB 服务/客户端包以及启动 MariaDB 服务。
 ```
 yum install mariadb-server -y
 systemctl start mariadb
 systemctl enable mariadb
 ```
-在 CentOS 6 系统上:
 
-如下示，安装 MySQL 服务/客户端包并且启动 MySQL 服务。
-```
-yum install mysql-server -y
-service mysqld start
-chkconfig mysqld on
-```
-在成功启动 MariaDB/MySQL 服务后，执行在 MariaDB/MySQL 服务包中的脚本。这一次的运行会为为数据库服务器进行一些安全强化措施，如设置（非空）的 root 密码、删除匿名用户、锁定远程访问。
+在成功启动 MariaDB/MySQL 服务后，执行在 MariaDB/MySQL 服务包中的脚本。这一次的运行会为为数据库服务器进行一些安全强化措施，如设置 root 密码、删除匿名用户、锁定远程访问。
 ```
 执行命令：
 mysql_secure_installation
 
 部分提示语翻译：
 Enter current password for root (enter for none): ----》默认为空密码直接回车
-Set root password? [Y/n] y                        ----》设置root密码
-New password:                                     ----》新密码
+Set root password? [Y/n] y                        ----》是否设置root密码（推荐：是）
+New password:                                     ----》输入新密码
 Re-enter new password:                            ----》再次确认新密码
-Remove anonymous users? [Y/n] y                   ----》禁止匿名访问
-Disallow root login remotely? [Y/n] y             ----》不允许root远程访问
-Remove test database and access to it? [Y/n] y    ----》删除测试数据库test
-Reload privilege tables now? [Y/n] y              ----》重新加载授权信息
+Remove anonymous users? [Y/n] y                   ----》是否禁止匿名访问（推荐：是）
+Disallow root login remotely? [Y/n] y             ----》不允许root远程访问（推荐：是）
+Remove test database and access to it? [Y/n] y    ----》删除测试数据库test（推荐：是）
+Reload privilege tables now? [Y/n] y              ----》重新加载授权信息（推荐：是）
 ```
-这就是数据库的设置。现在进行下一步。
+还有设置UTF8编码，安装phpmyadmin数据库管理软件，见其他文档。
 
 ------
-###第三步: PHP
 
-PHP 是 LEMP 包中一个重要的组件，它负责把存储在 MariaDB/MySQL 服务器的数据取出生成动态内容。为了 LEMP 需要，您至少需要安装上 PHP-FPM 和 PHP-MySQL 两个模块。PHP-FPM（FastCGI 进程管理器）实现的是 nginx 服务器和生成动态内容的 PHP 应用程序的访问接口。PHP-MySQL 模块使 PHP 程序能访问 MariaDB/MySQL 数据库。
+## 第三步: PHP
 
-这里将安装php5.6.16，这是编写文档时最新的版本。
+PHP 是 LEMP 包中一个重要的组件，它负责把存储在 MariaDB/MySQL 服务器的数据取出生成动态内容。为了 LEMP 需要，您至少需要安装上 PHP-FPM 和 PHP-MySQL 两个模块。PHP-FPM（FastCGI 进程管理器）实现的是 Nginx 服务器和生成动态内容的 PHP 应用程序的访问接口。PHP-MySQL 模块使 PHP 程序能访问 MariaDB/MySQL 数据库。
 
-在 CentOS 7 系统上:
-安装yum源（官网：https://webtatic.com/ 这里可以找到最新可用的源，这是一个专门提供最新版LAMP环境的源）
+这里将安装 PHP 7.1，这是编写文档时最新的版本。
+
+**安装yum源**
+
+国内可能无法访问 https://dl.fedoraproject.org ，故下面这个源安装语句可能会执行失败。
 ```
 rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+```
+这里给出代替的语句，阿里镜像站的。注：若使用阿里云服务器，将源的域名从 mirrors.aliyun.com 改为 mirrors.aliyuncs.com ，不占用公网流量。
+```
+rpm -Uvh http://mirrors.aliyun.com/epel/epel-release-latest-7.noarch.rpm
+```
+清华大学镜像站的
+```
+rpm -Uvh https://mirrors.tuna.tsinghua.edu.cn/epel/epel-release-latest-7.noarch.rpm
+```
+然后安装另外一个源：webtatic（官网：https://webtatic.com/ 这里可以找到最新可用的源，这是一个专门提供最新版LAMP环境的源）
+```
 rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
 ```
-如果提示失败，请重试几次，成功会有进度条和100%字样(##############[100%])
-如果该yum源不可用，请使用其他源
+以上提到的各种安装源语句，如果提示失败，请重试几次，成功会有进度条和100%字样(##############[100%])。
+如果该yum源不可用，请使用其他源。
 
-查看安装版本
+
+**查看可安装的PHP版本**
 ```
 yum list php*
 ```
@@ -145,53 +130,36 @@ yum install -y php56w php56w-bcmath php56w-cli php56w-dba php56w-common php56w-d
 ```
 yum install -y php70w php70w-bcmath php70w-cli php70w-common php70w-dba php70w-devel php70w-fpm php70w-gd php70w-mbstring php70w-mcrypt php70w-mysqlnd php70w-opcache php70w-pdo php70w-pear php70w-pecl-apcu php70w-process php70w-xml
 ```
-在 CentOS 6 系统上:
-首先，您需要从仓库中安装 REMI 库（参见本指南），并安装软件包。
-```
-yum --enablerepo=remi install php php-fpm php-mysql
-```
-在安装 PHP 时，得注意两个地方:
 
-在 CentOS 6 系统中，安装 REMI仓库中最新的 php-mysql 模块时，MySQL 的服务端包和客户端包会被当做一部分依赖包而自动的更新。
-
-在 CentOS 6 和 CentOS 7 中，在安装 PHP 包的同时会把 Apache web 服务器（即 httpd）当做它的依赖包一起安装。**这会跟 nginx web 服务器起冲突。**这个问题会在下一节来讨论。
+在 CentOS 6 和 CentOS 7 中，在安装 PHP 包的同时会把 Apache web 服务器（即 httpd）当做它的依赖包一起安装。**这会Nginx 服务器起冲突。**这个问题会在下一节来讨论。
 
 取决于您的使用情况，可以使用 yum 命令来定制您的 PHP 引擎，也许会想安装下面的任意一个扩展 PHP 模块包。
-    php-mysqlnd: mysql扩展，5.4以上版本默认以mysqlnd替代
-    php-cli: PHP 的命令行界面。从命令行里测试 PHP 时非常有用。
-    php-gd: PHP 的图像处理支持。
-    php-bcmath: PHP 的数学支持。
-    php-mcrypt: PHP 的加密算法支持 (例如 DES、Blowfish、CBC、 CFB、ECB ciphers 等)。
-    php-xml: PHP 的 XML 解析和处理支持。
-    php-dba: PHP 的数据抽象层支持。
-    php-pecl-apc: PHP 加速器/缓存支持。
+- php-mysqlnd: mysql扩展，5.4以上版本默认以mysqlnd替代
+- php-cli: PHP 的命令行界面。从命令行里测试 PHP 时非常有用。
+- php-gd: PHP 的图像处理支持。
+- php-bcmath: PHP 的数学支持。
+- php-mcrypt: PHP 的加密算法支持 (例如 DES、Blowfish、CBC、 CFB、ECB ciphers 等)。
+- php-xml: PHP 的 XML 解析和处理支持。
+- php-dba: PHP 的数据抽象层支持。
+- php-pecl-apc: PHP 加速器/缓存支持。
 安装时，要查看可用的 PHP 模块的完整列表的话，可以运行：
 ```
-//CentOS 7中
 yum search php- 
-// CentOS 6中
-yum --enablerepo=remi search php-
 ```
-###启动 PHP-FPM
+
+#### 启动 PHP-FPM
 
 您需要启动 PHP-FPM ，然后把它放到自动启动服务列表。
-
-在 CentOS 7 系统上:
-
 ```
 systemctl start php-fpm
 systemctl enable php-fpm
 ```
-在 CentOS 6 系统上:
-```
-chkconfig php-fpm on
-service php-fpm start
-```
 
 ----
-###第四步: 配置 LEMP 组合包
+### 第四步: 配置 LEMP 组合包
 本教程的最后一步是调整 LEMP 组合包的配置。
-####使 Httpd 不可用
+
+#### 使 Httpd 不可用
 
 首先，让我们把早先随 PHP 包安装的 httpd 服务给禁用掉。
 
@@ -199,11 +167,8 @@ service php-fpm start
 ```
 systemctl disable httpd
 ```
-在 CentOS 6 系统上:
-```
-chkconfig httpd off
-```
-####配置 Nginx
+
+#### 配置 Nginx
 
 接下来，让我们配置 nginx 虚拟主机，使得 nginx 可以通过 PHP-FPM 来处理 PHP 的任务。用文本编辑器打开 /etc/nginx/conf.d/www.conf(该文件是不存在的，打开时将自动创建) ，然后按如下所示修改。
 （建议使用WinSCP等FTP工具来修改文件，图形界面操作更方便）
@@ -320,7 +285,9 @@ service php-fpm restart
 
 ----
 
-###配置vim
+### 其他配置
+
+### 配置vim
 阿里云自带vim，如果不小心卸载或其他问题，请重新安装。
 ```
 yum -y install vim
