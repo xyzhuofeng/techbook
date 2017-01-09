@@ -1,5 +1,10 @@
-##在CentOS服务器上安装配置LEMP的详细教程
-已适配阿里云主机 CentOS 7 x64
+# CentOS 7.2 LENP环境配置文档
+
+by HyperQing 整理和实践检验（仅检验过CentOS 7.2，CentOS 6未检验）
+
+[TOC]
+
+已适配阿里云主机 CentOS 7 x64，腾讯云 CentOS 7.2 x64。
 >**LEMP 组合包**是一款日益流行的网站服务组合软件包，在许多生产环境中的核心网站服务上起着强有力的作用。正如其名称所暗示的， LEMP 包是由 Linux、nginx、MariaDB/MySQL 和 PHP 组成的。在传统的 LAMP 包中使用的 Apache HTTP 协议服务器性能低下而且难于大规模集群，相比来说 nginx 的高性能及轻量级等特性，正是其的替代方案。 MariaDB 是一款社区支持驱动的 MySQL 数据库的分支，其功能更多性能更佳。PHP，服务端编程语言，具体是由 PHP FastCGI 的增强版 PHP-FPM 组件来处理，生成网页动态内容。
 >
 >（LCTT 译注：为何采用 LEMP 而不是 LNMP 的缩写？据 https://lemp.io/ 的解释：Nginx 的发音是 Engine-X，重要的发音而不是首字母，而且 LEMP 实际上是可读的，而 LNMP 看起来只是字母表。）
