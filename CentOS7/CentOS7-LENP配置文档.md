@@ -1,25 +1,26 @@
 # CentOS 7.2 LENP环境配置文档
 
-by HyperQing 整理和实践检验（仅检验过CentOS 7.2，CentOS 6未检验）
+by HyperQing 整理和实践检验（仅检验过CentOS 7.2，CentOS 6未检验）2017-01-09
 
 [TOC]
 
 已适配阿里云主机 CentOS 7 x64，腾讯云 CentOS 7.2 x64。
+
 >**LEMP 组合包**是一款日益流行的网站服务组合软件包，在许多生产环境中的核心网站服务上起着强有力的作用。正如其名称所暗示的， LEMP 包是由 Linux、nginx、MariaDB/MySQL 和 PHP 组成的。在传统的 LAMP 包中使用的 Apache HTTP 协议服务器性能低下而且难于大规模集群，相比来说 nginx 的高性能及轻量级等特性，正是其的替代方案。 MariaDB 是一款社区支持驱动的 MySQL 数据库的分支，其功能更多性能更佳。PHP，服务端编程语言，具体是由 PHP FastCGI 的增强版 PHP-FPM 组件来处理，生成网页动态内容。
 >
 >（LCTT 译注：为何采用 LEMP 而不是 LNMP 的缩写？据 https://lemp.io/ 的解释：Nginx 的发音是 Engine-X，重要的发音而不是首字母，而且 LEMP 实际上是可读的，而 LNMP 看起来只是字母表。）
 
 
-这篇文章里，我们示范如何在 CentOS 操作平台上安装 LEMP 包。我们安装的目标是 CentOS 6 和 CentOS 7 两个操作平台，如有必要会指出它们的不同。
+这篇文章里，我们示范如何在 CentOS 操作平台上安装 LEMP 包。我们安装的目标是 CentOS 7 和 CentOS 6 两个操作平台，如有必要会指出它们的不同。
 
 ------
 
 ###第一步: Nginx
 
-让我们在 CentOS 上安装 nginx 作为第一步，然后对它作些基本的配置，比如使其能引导时启动和对防火墙做个性化设置。
+让我们在 CentOS 上安装 Nginx 作为第一步，然后对它作些基本的配置，比如使其能引导时启动和对防火墙做个性化设置。
 ####安装 Nginx
 
-让我们从它的官方的 RPM 源来安装一个预构建的稳定版本的 nginx 包。
+yum中已经有Nginx软件，安装即可。
 
 在 CentOS 7 系统上:
 ```
@@ -45,7 +46,7 @@ warning: /var/tmp/rpm-tmp.KttVHD: Header V4 RSA/SHA1 Signature, key ID 7bd9bf62:
 systemctl start nginx
 systemctl enable nginx
 ```
-//腾讯云、阿里云主机请省略以下两句，他们的管理中心均自带安全组配置用户管理端口
+注：控制腾讯云、阿里云主机请省略以下两句，他们的控制中心均自带安全组用于配置端口。
 ```
 firewall-cmd --zone=public --add-port=80/tcp --permanent
 firewall-cmd --reload
@@ -59,9 +60,18 @@ service iptables save
 ```
 ####测试 Nginx
 
-nginx 的默认文档要目录是 /usr/share/nginx/html。默认的 index.html 文件一定已经在这目录下了。让我们检测下是否可以访问到这个测试 web 页，通过主机的ip地址或已绑定的域名进行访问。
+nginx 的默认文档要目录是 `/usr/share/nginx/html`。默认的 `index.html` 文件一定已经在这目录下了。让我们检测下是否可以访问到这个测试 web 页，通过主机的ip地址或已绑定的域名进行访问。
 
-如果您能看到Nginx的测试页面，说明 nginx 已经正常启动。
+如果您能看到Nginx的测试页面，说明 nginx 已经正常启动。内容大概是：
+
+>Welcome to nginx on Fedora!
+>This page is used to test the proper operation of the nginx HTTP server after it has been installed. If you can read this page, it means that the web server installed at this site is working properly.
+
+>Website Administrator
+>This is the default index.html page that is distributed with nginx on Fedora. It is located in /usr/share/nginx/html.
+
+>You should now put your content in a location of your choice and edit the root configuration directive in the nginx configuration file /etc/nginx/nginx.conf.
+
 
 ------
 
