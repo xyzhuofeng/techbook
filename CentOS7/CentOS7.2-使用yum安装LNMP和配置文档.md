@@ -13,7 +13,7 @@ by HyperQing 2017-01-09
 本次安装的软件版本说明：
 
 - Nginx 1.10.2
-- MariaDB 5.5 （代替MySQL，MariaDB 有10.x版本，有硬件要求，学生服务器不推荐）
+- MariaDB 5.5 （用于代替MySQL）（MariaDB 有10.x版本，但是有硬件要求，不推荐学生服务器使用）
 - PHP 7.1.14
 
 **更多资料**
@@ -103,13 +103,11 @@ Reload privilege tables now? [Y/n] y              ---->重新加载授权信息�
 
 ## 第三步: PHP
 
-终于到 PHP 了，
-
-PHP 是 LEMP 包中一个重要的组件，它负责把存储在 MariaDB/MySQL 服务器的数据取出生成动态内容。为了 LEMP 需要，您至少需要安装上 PHP-FPM 和 PHP-MySQL 两个模块。PHP-FPM（FastCGI 进程管理器）实现的是 Nginx 服务器和生成动态内容的 PHP 应用程序的访问接口。PHP-MySQL 模块使 PHP 程序能访问 MariaDB/MySQL 数据库。
-
-这里将安装 PHP 7.1，这是编写文档时最新的版本。
+终于到 PHP 了。这里将安装 PHP 7.1，这是编写文档时最新的版本。
 
 ### 安装yum源
+
+CentOS 7 yum自带的源是PHP5.4版本，我们的目标是最新的PHP 7.1。这需要安装两个源：EPEL7和webtatic。
 
 国内可能无法访问 https://dl.fedoraproject.org ，故下面这个源安装语句可能会执行失败。
 ```
@@ -123,7 +121,7 @@ rpm -Uvh http://mirrors.aliyun.com/epel/epel-release-latest-7.noarch.rpm
 ```
 rpm -Uvh https://mirrors.tuna.tsinghua.edu.cn/epel/epel-release-latest-7.noarch.rpm
 ```
-然后安装另外一个源：webtatic（官网：https://webtatic.com/ 这里可以找到最新可用的源，这是一个专门提供最新版LAMP环境的源）
+然后安装另外一个源：webtatic（官网：https://webtatic.com/ 这里可以找到最新可用的PHP的源）
 ```
 rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
 ```
@@ -141,7 +139,7 @@ yum list php*
 ```
 yum search php71w
 ```
-下面给出PHP 7.1 可用的扩展的部分翻译和相关连接。
+下面给出 PHP 7.1 可用的扩展的部分翻译和相关连接。
 
 - php-bcmath：任意精度数学扩展库。 http://www.php.net/manual/zh/book.bc.php
 - php-cli：PHP 的命令行模式。从命令行里测试 PHP 时非常有用。
@@ -222,9 +220,9 @@ server {
     #access_log  /home/wwwlog/host.access.log  main;
 
     #404页面
-    error_page  404              /404.html;
+    #error_page  404              /404.html;
     location = /404.html {
-        root   /usr/share/nginx/html;
+        #root   /usr/share/nginx/html;
     }
 
     #50x页面
