@@ -155,7 +155,7 @@ yum search php71w
 - php-intl：Internationalization Functions，国际化功能。http://php.net/manual/zh/book.intl.php
 - php-ldap：Lightweight Directory Access Protocol，轻量级目录访问协议。
 - php-mbstring：多字节字符串扩展库（例如：转码或计算UTF8字符串长度）http://php.net/manual/zh/book.mbstring.php
-- php-mcrypt：加密支持扩展库，支持20多种加密算法和8种加密模式 ，例如 DES、Blowfish、CBC、 CFB、ECB ciphers 、rc2等。http://php.net/manual/zh/book.mcrypt.php
+- php-mcrypt：加密支持扩展库。支持20多种加密算法和8种加密模式。在PHP7中淘汰不再使用，需要用openssl代替。 具体见：http://php.net/manual/zh/migration71.deprecated.php http://php.net/manual/zh/book.mcrypt.php
 - php-mysql：MySQL扩展。从 PHP 5.5.0 起这个扩展已经被废弃，并且从 PHP 7.0.0. 开始被移除。作为替代，可以使用 mysqli 或者 PDO_MySQL 扩展代替。http://php.net/manual/zh/intro.mysql.php
 - php-mysqlnd：Mysql Native驱动，最新的MySQL扩展，用 C 写成，5.3开始使用。 http://php.net/manual/zh/intro.mysqlnd.php
 - php-odbc：用于连接ODBC数据库。例如：Microsoft Access数据库。http://php.net/manual/zh/intro.uodbc.php
