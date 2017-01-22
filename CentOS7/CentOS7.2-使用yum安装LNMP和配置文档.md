@@ -182,7 +182,7 @@ yum search php71w
 ### 执行安装
 这里将安装 PHP 7.1 版本和笔者自己常用的扩展(满足普通Web项目，含Redis)，具体安装的扩展以实际需要为准。
 ```
-yum install -y php71w php71w-bcmath php71w-cli php71w-common php71w-fpm php71w-gd php71w-mbstring php71w-mcrypt php71w-mysqlnd php71w-opcache php71w-pdo php71w-pecl-redis php71w-process php71w-xml
+yum install -y php71w php71w-bcmath php71w-cli php71w-common php71w-fpm php71w-gd php71w-mbstring php71w-mysqlnd php71w-opcache php71w-pdo php71w-pecl-redis php71w-process php71w-xml
 ```
 
 ### 启动 PHP-FPM
