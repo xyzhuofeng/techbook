@@ -73,7 +73,7 @@ nginx 的默认文档要目录是 `/usr/share/nginx/html`。默认的 `index.htm
 - 是否遗漏执行`systemctl start nginx`
 - 腾讯云或阿里云的控制中心->安全组是否正确设置，例如：开放80端口。
 
-### 第二步: MariaDB
+## 第二步: MariaDB
 
 这一步安装数据库。CentOS/RHEL 6 或早期的版本中提供的是 MySQL 的服务器/客户端安装包，但 CentOS/RHEL 7 已使用了 MariaDB 替代了默认的 MySQL。作为 MySQL 的替代品，MariaDB 保证了与 MySQL 的 API 和命令行用法方面最大的兼容性。从笔者的几个商业项目实践来看，尚未发现可能造成问题的地方。一般的，当成MySQL使用即可。
 >百度百科-MariaDB：http://baike.baidu.com/link?url=buDhXU5j6i_ne5ZFKi1fuSrSd65sgEkizJl0-aQdaXkatGEYFSyJwThy7Bh_uIAic6dsEdCEOptmAIvgsVq4s_
