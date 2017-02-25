@@ -36,9 +36,16 @@ Nginx 默认使用80端口，请确保你的80端口无被其他软件占用。
 
 如果服务器软件未搞定，后面装什么都没用，这里第一步先安装 Nginx 服务器软件，确保它能够运行，再安装其他软件。
 
+## 安装源
+
+这是一个可选的操作。如果你的 CentOS 系统没 Nginx 的源，导致`yum`无法安装 Nginx ，请执行这个语句添加源。
+```
+rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+```
+
 ### 安装 Nginx
 
-yum中已经有  Nginx 软件，安装即可。
+如果你的`yum`中已经有 Nginx 软件，安装即可。没有的话，参照上一步**安装源**进行操作。
 ```
 yum install nginx -y
 ```
