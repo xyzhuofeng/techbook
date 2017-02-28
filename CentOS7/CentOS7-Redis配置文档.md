@@ -14,6 +14,6 @@ yum install php71w-pecl-redis -y
 
 systemctl restart php-fpm
 
-telnet 127.0.0.1 6379
+redis-cli
 
 ```
