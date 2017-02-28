@@ -4,13 +4,13 @@ yum install epel-release
 ```
 
 ```
-yum install redis
+yum install redis -y
 systemctl start redis
 systemctl enable redis
 ```
 
 ```
-yum install php56w-pecl-redis 
+yum install php71w-pecl-redis -y
 
 systemctl restart php-fpm
 
