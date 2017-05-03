@@ -38,5 +38,44 @@ http://domain.com/phpmyadmin
 
 ###通过二级域名访问（如http://phpmyadmin.domain.com）
 
+附：常用的Nginx配置
 
-
+```
+server {
+    listen       80;
+    server_name abc.domain.com;
+    root   /home/phpmyadmin;
+    index  index.php index.html index.htm;
+    #charset koi8-r;
+    access_log  /home/accesslog/mysqladmin.access.log  main;
+    location / {
+    }
+    #error_page  404              /404.html;
+    # redirect server error pages to the static page /50x.html
+    #
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        #root   /usr/share/nginx/html;
+    }
+    # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+    #
+    #location ~ \.php$ {
+    #    proxy_pass   http://127.0.0.1;
+    #}
+    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+    #
+    location ~ \.php$ {
+        fastcgi_pass   127.0.0.1:9000;
+        fastcgi_index  index.php;
+        include        fastcgi_params;
+        #script$fastcgi_script_name
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
+    # deny access to .htaccess files, if Apache's document root
+    # concurs with nginx's one
+    #
+    location ~ /\.ht {
+        deny  all;
+    }
+}
+```
