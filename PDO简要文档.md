@@ -66,17 +66,19 @@ $db = null;
 
 > http://php.net/manual/zh/pdo.connections.php
 
+试验这段代码的方法之一，停止 MySQL 服务即可。
 ```php
 try {
     $db = new PDO('mysql:host=localhost;dbname=test', $user, $pass);
     foreach($db->query('SELECT * from User') as $row) {
         print_r($row);
     }
-    $dbh = null;
+    $db = null;
 } catch (PDOException $e) {
+    // 这里做一些自定义处理，比如弹出一个报错页面
+    // 或着输出报错信息，或着输出到日志
     print "Error!: " . $e->getMessage() . "<br/>";
-    die();
+    // 必要的情况下，强行退出程序，不再执行后面的代码
+    exit();
 }
 ```
-
-
