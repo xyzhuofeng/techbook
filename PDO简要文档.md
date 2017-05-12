@@ -38,7 +38,7 @@ $db = new PDO('mysql:host=localhost;dbname=test', $user, $pass);
 
 `PDO::query()`执行成功的话，会返回一个`PDOStatement`对象，失败则返回 `false`。
 
-下面的代码中，`$result`尽管是个`PDOStatement`，但你依然可以对其进行遍历得到数据。
+下面的代码中，`$result`尽管是个`PDOStatement`，但你依然可以对其进行遍历得到数据(本例中当作一个二维数组来用就好)。
 ```php
 $db = new PDO('mysql:host=localhost;dbname=test', $user, $pass);
 $result = $db->query('SELECT * from User');
