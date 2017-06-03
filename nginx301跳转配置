@@ -1,5 +1,0 @@
-server {
-    listen 80;
-    server_name www.hyperqing.com 121.42.27.148;
-    return 301 $scheme://hyperqing.com$request_uri;
-}
