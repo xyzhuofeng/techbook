@@ -451,6 +451,52 @@ header
 body
 ```
 
+## 工厂方法模式(Factory Pattern)
+
+一句话描述：在简单工厂模式的基础上，连工厂类都进一步抽象和子类化。
+
+```
+class A{}
+class B{}
+class C{}
+
+//  工厂接口
+interface FactoryInterface{
+    public static function getInstance();
+}
+
+// 具体工厂类
+class AFactory implements FactoryInterface
+{
+    public static function getInstance()
+    {
+        return new A;
+    }
+}
+// 具体工厂类
+class BFactory implements FactoryInterface
+{
+    public static function getInstance()
+    {
+        return new B;
+    }
+}
+// 具体工厂类
+class CFactory implements FactoryInterface
+{
+    public static function getInstance()
+    {
+        return new C;
+    }
+}
+// 这里三个实例变量，在强类型语言中应声明为 FactoryInterface 类型
+$class_a = AFactory::getInstance();
+$class_b = BFactory::getInstance();
+$class_c = CFactory::getInstance();
+```
+
+
+
 ## 单例模式(Singleton Pattern)
 
 一句话描述：该类包含一个**静态方法**和**静态变量**，静态方法会实例化指定类，并存放对象到静态变量中，如果静态变量已存在对象则直接返回，这样即使多次调用静态方法都返回同一个对象。
