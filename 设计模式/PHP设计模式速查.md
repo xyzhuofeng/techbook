@@ -495,7 +495,42 @@ $class_b = BFactory::getInstance();
 $class_c = CFactory::getInstance();
 ```
 
+## 原型模式(Prototype Pattern)
 
+一句话描述：使用语言自带的`clone()`方法。
+
+```
+class A
+{
+    public $str = 'hello';
+
+    public $obj;
+
+    public function __construct()
+    {
+        $this->obj = new stdClass();
+    }
+
+    // 深复制
+    public function __clone()
+    {
+        $this->obj = clone $this->obj;
+    }
+}
+
+$a = new A;
+$b = $a; // 这是传引用
+$b->str = 'world'; // 对$b对象的修改，将影响$a
+echo $a->str; // 输出'world'
+
+$a = new A;
+$b = clone $a; // 正确复制对象到$b
+$b->str = 'world'; // 对$b对象的修改，不会影响$a
+echo $a->str; // 输出'hello'
+// 这里输出的对象id是不同的，如果是浅复制，则id相同，引用了同一个对象
+var_dump($a->obj);
+var_dump($b->obj);
+```
 
 ## 单例模式(Singleton Pattern)
 
