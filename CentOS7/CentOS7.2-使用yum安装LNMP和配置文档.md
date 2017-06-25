@@ -152,7 +152,7 @@ yum search php71w
 - php-cli：PHP 的命令行模式。从命令行里测试 PHP 时非常有用。
 - php-common：Common files for PHP。PHP的通用文件。
 - php-dba：A database abstraction layer module for PHP applications。数据库抽象层。（用于Berkeley DB (伯克利数据库)）
-- php-devel：php开发包。构建编译 PHP扩展时使用的文件。如果不需要编译就用不到。
+- php-devel：php开发包。构建编译 PHP扩展时使用的文件。如果不需要编译就用不到。（**使用Swoole扩展库时需要**）
 - php-embedded：PHP library for embedding in applications。内嵌到应用的PHP库。与php-fpm相对。常用的有5种形式，CLI/CGI（命令行）、Multiprocess（多进程）、Multithreaded（多线程）、FastCGI和Embedded（内嵌）。 http://blog.csdn.net/longxibendi/article/details/39587647
 - php-enchant：Enchant spelling library，各种拼写库的抽象层。国际化与字符编码支持的其中一样。http://php.net/manual/zh/book.enchant.php
 - php-fpm：FastCGI 进程管理器。http://php.net/manual/zh/book.fpm.php
