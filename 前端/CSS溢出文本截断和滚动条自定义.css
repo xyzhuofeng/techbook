@@ -1,4 +1,10 @@
-    text-overflow: ellipsis;
+
+/*CSS溢出文本截断*/
+white-space: nowrap;
+width: 180px;
+text-overflow: ellipsis;
+overflow: hidden;
+    
     
 /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
     ::-webkit-scrollbar
