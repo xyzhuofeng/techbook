@@ -30,9 +30,9 @@
 // 通过构造函数创建一个连接对象
 $db = new PDO('mysql:host=localhost;dbname=test', $user, $pass);
 // 始终抛出异常
-self::$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 // 设置为utf8编码
-self::$db->exec('set names utf8mb4');
+$db->exec('set names utf8mb4');
 // 随后可以使用$db进行数据库操作。
 ```
 
