@@ -73,7 +73,7 @@ SELECT 3*2;  -- 这是一个注释，该语句结果为6
 
 ## 检索数据
 
-只返回不同的（唯一的）行
+只返回不同的（唯一的）行，`DISTINCT`必须放在列名之前
 ```sql
 SELECT DISTINCT name FROM my_table;
 ```
