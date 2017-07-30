@@ -59,6 +59,8 @@ SHOW WARNINGS;
 HELP SHOW;
 ```
 
+MariaDB支持使用`INFORMATION_SCHEMA`来获取和过滤更多的Schema信息。
+
 
 注释
 >注意，Markdown语法高亮可能无法正确处理下方代码的高亮，但仍然是有效正确的代码。
@@ -75,7 +77,7 @@ SELECT 3*2;  -- 这是一个注释，该语句结果为6
 ```sql
 SELECT DISTINCT name FROM my_table;
 ```
->**不能部分使用DISTINCT** DISTINCT关键字应用于所有列，而不仅仅应用于其后的一列如果指定 `SELECT DISTINCT name ,id FROM my_table;` ，会检索所有的行，除非指定两列都不同。
+>**不能部分使用DISTINCT** DISTINCT关键字应用于所有列，而不仅仅应用于其后的一列。如果指定 `SELECT DISTINCT name ,id FROM my_table;` ，会检索所有的行，除非指定两列都不同。
 
 
 排序
