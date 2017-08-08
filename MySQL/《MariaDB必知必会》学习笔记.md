@@ -1,4 +1,5 @@
 # 《MariaDB必知必会》学习笔记
+
 >本书由[美]Ben Forta 著，张艺乐 译。
 
 by HyperQing<469379004@qq.com>
@@ -61,7 +62,6 @@ HELP SHOW;
 
 MariaDB支持使用`INFORMATION_SCHEMA`来获取和过滤更多的Schema信息。
 
-
 注释
 >注意，Markdown语法高亮可能无法正确处理下方代码的高亮，但仍然是有效正确的代码。
 ```sql
@@ -87,4 +87,71 @@ SELECT * FROM my_table ORDER BY id DESC; --按id倒序排列
 SELECT * FROM my_table ORDER BY id,name; --默认顺序，按id排列后再按name排列
 SELECT * FROM my_table ORDER BY id DESC,name ASC; -- 按id倒序排列，再按name顺序排列
 ```
->注：
+
+
+## limit
+
+```
+limit a,b
+```
+a是从0开始的
+```
+第5行开始，返回5行。
+limit 5,5
+不超过5行。
+limit 5 
+```
+
+## where
+
+查询值为(不为)null的记录
+```
+where name IS [NOT] NULL
+```
+模糊匹配，`%`匹配任何数量任何字符，大小写由数据库配置决定，不能匹配NULL。
+```
+where name like '%'
+```
+模糊匹配，`_`匹配一个字符。
+```
+where name like '_'
+```
+正则表达式
+```
+where name REGXP '[0-9A-Za-z]'
+```
+
+## 字符串操作函数
+
+`Concat()`拼接多个字符串
+```
+select Concat(name,'(',country,')')
+```
+
+```
+去除两侧空格
+Trim()
+LTrim()
+RTrim()
+
+Upper() 大写
+Lower() 小写
+Left() 获取左端的字符
+Right() 获取右端的字符
+Locate() 搜索字符串
+Substring() 求子串
+Soundex() 获取单词声音数据，用于查找英文相似发音单词，如soundex('lee') = soundex('le')
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
