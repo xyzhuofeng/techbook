@@ -209,6 +209,37 @@ sum()
 ```
 avg(DISTINCT price)
 ```
+where和having用法几乎一样。
+
+where不能使用聚合函数，要用having代替。
+
+having配合group by使用，是基于组的聚合值的过滤，不是过滤特定的行。
+
+**简单地说：where用于过滤行，having用于过滤组。**
+
+## select执行顺序
+
+- select
+- from
+- where
+- group by
+- having
+- order by
+- limit
+
+## 子查询
+
+常用子查询发生位置：
+```
+IN (select ...)
+
+select a,b,(select ...)
+
+from (select ...)
+```
+
+
+
 
 
 
