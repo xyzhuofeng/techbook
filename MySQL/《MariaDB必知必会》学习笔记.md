@@ -143,14 +143,72 @@ Substring() 求子串
 Soundex() 获取单词声音数据，用于查找英文相似发音单词，如soundex('lee') = soundex('le')
 ```
 
+## 时间操作
 
+设数据格式如【2017-02-03 12:06:13】，如果要查找2017年2月的记录，可能会这样书写
+```
+where login_date between '2017-02-01 00:00:00' to '2017-02-28 23:59:59'
+```
+问题随之而来，任意一年的2月天数如何处理？书中给出更好的做法。
+```
+where Year(login_date) = '2017' and Month(login_date) = '2'
+```
+如此即可免去闰年的计算问题。下面是其他的一些例子。
+```
+where Date(login_date) = '2017-02-03' and Time(login_date) = '12:06:13'
 
+where Date(login_date) between '2017-09-01' and '2017-09-30'
+```
 
+时间函数
+```
+AddDate()
+AddTime()
+CurTime()
+CurDate()
+Date()
+DateDiff()
+Date_Format()
+Dayofweek()
+Hour()
+Minute()
+Month()
+Now()
+Second()
+Time()
+Year()
+```
+>MariaDB 5.3+ 支持微秒
 
+## 数学函数
 
+```
+Abs()
+Cos()
+Exp()
+Mod()
+Pi()
+Rand()
+Sin()
+Cos()
+Tan()
+```
 
+## 聚合函数
 
+```
+avg()
+count()
+max()
+min()
+sum()
+```
+以上均忽略NULL，**注意：count(列名)忽略NULL，count(*)包含NULL**
 
+以下情况先排除重复项再计算
+```
+avg(DISTINCT price)
+```
 
 
 
