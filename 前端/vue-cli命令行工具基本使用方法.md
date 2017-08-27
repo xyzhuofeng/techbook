@@ -40,11 +40,11 @@ vue init webpack my-project
 cd my-project
 cnpm install
 ```
-为生产部署版本安装vue-router vue-resource
+为生产部署版本安装vue-router和vue-resource
 ```
 cnpm install vue-router vue-resource --save
 ```
-为调试开发版本安装vue-router vue-resource
+为调试开发版本安装vue-router和vue-resource
 ```
 cnpm install vue-router vue-resource --save-dev
 ```
