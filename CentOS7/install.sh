@@ -19,24 +19,6 @@ systemctl enable php-fpm
 
 # Install Git
 yum install git -y
-# Clone Raijin Tool
-cd /home
-git clone https://git.coding.net/clyoko/raijin.git
-
-# Download Nginx config
-curl https://coding.net/u/clyoko/p/raijin-shell/git/raw/master/raijin.conf -o /etc/nginx/conf.d/raijin.conf
-
-# Get this server ip
-host_ip=`curl ip.6655.com/ip.aspx -s`
-echo ${host_ip}
-
-# Write this host ip to Nginx config
-sed -i "s/@SERVER_NAME@/${host_ip}/g" /etc/nginx/conf.d/raijin.conf
-
-echo "==============================="
-echo "The Nginx config of Raijin System is already existed."
-echo "==============================="
-echo "运维平台访问地址："${host_ip}":8889"
 
 systemctl restart nginx
 exit 0
