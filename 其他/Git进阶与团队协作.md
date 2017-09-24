@@ -156,6 +156,11 @@ $ git revert <commit>
 ```
 $ git stash
 ```
+还原暂存的代码
+```
+$ git stash pop
+```
+
 
 
 ## tag和checkout（标签与签出实现版本切换）
