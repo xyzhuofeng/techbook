@@ -80,7 +80,9 @@ nginx 的默认文档要目录是 `/usr/share/nginx/html`。默认的 `index.htm
 - 是否遗漏执行`systemctl start nginx`
 - 腾讯云或阿里云的控制中心->安全组是否正确设置，例如：开放80端口。
 
-## 第二步: MariaDB
+## 第二步: MariaDB 或 MySQL 5.7
+
+**以下这段安装的是 MariaDB ！如果安装MySQL，请看分割线后的部分**
 
 这一步安装数据库。CentOS/RHEL 6 或早期的版本中提供的是 MySQL 的服务器/客户端安装包，但 CentOS/RHEL 7 已使用了 MariaDB 替代了默认的 MySQL。作为 MySQL 的替代品，MariaDB 保证了与 MySQL 的 API 和命令行用法方面最大的兼容性。从笔者的几个商业项目实践来看，尚未发现可能造成问题的地方。一般的，当成MySQL使用即可。
 >百度百科-MariaDB：http://baike.baidu.com/link?url=buDhXU5j6i_ne5ZFKi1fuSrSd65sgEkizJl0-aQdaXkatGEYFSyJwThy7Bh_uIAic6dsEdCEOptmAIvgsVq4s_
@@ -91,13 +93,62 @@ yum install mariadb-server -y
 systemctl start mariadb
 systemctl enable mariadb
 ```
-在成功启动 MariaDB 服务后，执行 MariaDB 自带的脚本。这个步骤将帮助你令数据库更安全，如设置 root 密码、删除匿名用户、禁止远程访问。
+
+------
+
+**以下这段安装的是 MySQL ！如果安装 MariaDB ，请看上面的部分**
+
+>MySQL下载页：http://dev.mysql.com/downloads/repo/yum/
+
+添加最新 MySQL 源
+```
+rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+```
+安装 MySQL ，启动 MariaDB 服务，且设为开机自启。
+```
+yum install mysql-server -y
+systemctl start mysqld
+systemctl enable  mysqld
+```
+
+安装完成后，需要查看日志来找到默认密码。
+```
+vi /var/log/mysqld.log
+```
+日志是这样的
+```
+2017-12-21T02:05:00.756467Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2017-12-21T02:05:02.746971Z 0 [Warning] InnoDB: New log files created, LSN=45790
+2017-12-21T02:05:02.967713Z 0 [Warning] InnoDB: Creating foreign key constraint system tables.
+2017-12-21T02:05:03.088761Z 0 [Warning] No existing UUID has been found, so we assume that this is the first time that this server has been started. Generating a new UUID: 5b5f7c5e-e5f3-11e7-8224-00163e042e4f.
+2017-12-21T02:05:03.090630Z 0 [Warning] Gtid table is not ready to be used. Table 'mysql.gtid_executed' cannot be opened.
+2017-12-21T02:05:03.091075Z 1 [Note] A temporary password is generated for root@localhost: y&oUR*sgl1Zq
+2017-12-21T02:05:06.783924Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2017-12-21T02:05:06.785709Z 0 [Note] /usr/sbin/mysqld (mysqld 5.7.20) starting as process 9913 ...
+2017-12-21T02:05:06.788495Z 0 [Note] InnoDB: PUNCH HOLE support available
+2017-12-21T02:05:06.788522Z 0 [Note] InnoDB: Mutexes and rw_locks use GCC atomic builtins
+2017-12-21T02:05:06.788526Z 0 [Note] InnoDB: Uses event mutexes
+2017-12-21T02:05:06.788530Z 0 [Note] InnoDB: GCC builtin __atomic_thread_fence() is used for memory barrier
+2017-12-21T02:05:06.788533Z 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2017-12-21T02:05:06.788536Z 0 [Note] InnoDB: Using Linux native AIO
+2017-12-21T02:05:06.788795Z 0 [Note] InnoDB: Number of pools: 1
+```
+其中有一行就是默认密码，建议立即修改密码。
+```
+A temporary password is generated for root@localhost: y&oUR*sgl1Zq
+```
+
+------
+
+**以下内容在 MariaDB 或 MySQL 均可正常操作。**
+
+在成功启动 MariaDB 或 MySQL 服务后，执行 MariaDB 自带的脚本。这个步骤将帮助你令数据库更安全，如设置 root 密码、删除匿名用户、禁止远程访问。
 ```
 执行命令：
 mysql_secure_installation
 
 部分提示语翻译：
-Enter current password for root (enter for none): ---->默认为空密码直接回车
+Enter current password for root (enter for none): ---->MariaDB 默认为空密码直接回车，MySQL 默认密码在上述日志中
 Set root password? [Y/n] y                        ---->是否设置root密码（推荐：是）
 New password:                                     ---->输入新密码
 Re-enter new password:                            ---->再次确认新密码
@@ -106,7 +157,7 @@ Disallow root login remotely? [Y/n] y             ---->不允许root远程访问
 Remove test database and access to it? [Y/n] y    ---->删除测试数据库test（推荐：是）
 Reload privilege tables now? [Y/n] y              ---->重新加载授权信息（推荐：是）
 ```
-还有设置UTF8编码（默认是Iatin1字符集，处理中文数据会乱码），安装phpmyadmin数据库管理软件等，见其他文档。
+还有设置UTF8编码（默认是Iatin1字符集，如果数据库/表没有声明 utf8 或 utf8mb4 处理中文数据会乱码），安装phpmyadmin数据库管理软件等，见其他文档。
 
 ## 第三步: PHP
 
