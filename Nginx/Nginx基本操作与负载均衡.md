@@ -1,4 +1,4 @@
-# Nginx基本操作与负载均衡.md
+# Nginx基本操作与负载均衡
 
 by HyperQing 2018-01-01
 
