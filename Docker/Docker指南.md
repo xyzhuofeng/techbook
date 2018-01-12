@@ -44,10 +44,11 @@ docker run -d -p 8080:8080 allovince/php-helloworld
 ```
 docker ps
 ```
-* -a :显示所有的容器，包括未运行的。
+* `-a` :显示所有的容器，包括未运行的。
 
 删除容器
 ```
 docker rm 容器id
 ```
-* -f :通过SIGKILL信号强制删除一个运行中的容器
+* `-f` :通过SIGKILL信号强制删除一个运行中的容器
+* 
