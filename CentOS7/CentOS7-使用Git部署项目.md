@@ -55,6 +55,7 @@ cd ~
 ```
 mkdir .ssh
 chmod 700 .ssh
+cd .ssh
 ```
 然后创建密钥，直接连按三次回车，第一次是指定目录，第二第三次是passphrase(私钥的密码，留空也可)
 ```
