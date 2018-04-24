@@ -31,7 +31,7 @@ by HyperQing 2018-04-24
 3. 发现疏漏错误之处。
 请到 Issues 发表，我会尽快回复你。
 
-合作请联系：my@hyperqing.com
+合作请联系：me@hyperqing.com
 
 ## 编写计划
 
