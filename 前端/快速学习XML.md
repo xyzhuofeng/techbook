@@ -23,7 +23,6 @@
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml version="1.0" encoding="UTF-8"?>
 <!-- 这是注释 -->
 <recipe>
     <recipename>Ice Cream Sundae</recipename>
@@ -187,14 +186,3 @@ xml声明必须为第一行,且前面不允许存在空白（空格、Tab制表�
     </xsd:element>
 </xsd:schema>
 ```
-
-## XML样式表：XSLT
-
-
-
-
-
-
-
-
-
