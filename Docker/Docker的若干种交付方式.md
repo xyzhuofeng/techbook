@@ -17,7 +17,7 @@ Docker的使用方法是多种多样的，可以按照实际需要来调整使�
 
 ## 三方工具
 
-- 阿里云腾讯云的 Docker Swarm 或 K8S。
+- 阿里云腾讯云的 Docker Swarm 或 Kubernetes(K8S)。
 - DaoCloud，容器云平台。使用该平台即可实现可视化的、版本化的持续构建和持续交付。
 
 ## 普通单机镜像

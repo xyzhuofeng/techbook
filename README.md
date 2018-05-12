@@ -8,9 +8,9 @@ by HyperQing 2018-04-24
 
 魔法书又开更了！
 
-- 新增 **Docker/Docker的若干种交付方式**2018-05-12
-- 新增 **设计思路/解决方案积累**2018-05-12
-- 新增 **团队管理工具/Gogs代码仓库实践**2018-05-12
+- 新增 **Docker/Docker的若干种交付方式** 2018-05-12
+- 新增 **设计思路/解决方案积累** 2018-05-12
+- 新增 **团队管理工具/Gogs代码仓库实践** 2018-05-12
 
 ## 介绍
 
@@ -46,49 +46,35 @@ by HyperQing 2018-04-24
 
 ## 编写计划
 
-- HTTPS 部署（优先）：因为后面的诸多产品都依赖HTTPS
-- Docker 部署与监控（优先）
+- 准备换用Gitbook展示
+
+- HTTPS 部署：因为后面的诸多产品都依赖HTTPS
 - 我是如何在自己的app上关注仓库的。
 - 设计模式补充：强调如何应用
 - 即时通讯：以APP为例展示
 - 树莓派文档整理
-- 解决方案大全：外包、快速快发
 - 框架原理分析：论框架的诞生
 - 再论cgi.path_info问题
-- ThinkPHP5的PDO预处理：论证如何合理书写防御性代码
+- ThinkPHP 5.1的PDO预处理：论证如何合理书写防御性代码
 - OpenSSL常用操作：针对AES、3DES等操作
 - 异常处理设计：如何编写合适的异常类并抛出异常
 - PHP命令行工具编写：快速搭建你的PHP命令行工具
 - 精通Git操作
 - PHP7协程实战
 - Redis队列和消息队列
-- Gogs代码仓库部署（优先）：为小型企业和团队提供代码仓库解决方案（已完成）
+- 解决方案积累（已完成）
+- Gogs代码仓库部署：为小型企业和团队提供代码仓库解决方案（已完成）
 
 ## 已发布的内容
 
 2018-04-24更新目录
 ```
 根目录
-│  .gitignore
 │  Atom格式化代码ctrl_alt_L.coffee
 │  README.md
 │  Redis快速开始.md
 │  vue使用element-ui的el-input监听不了回车事件.md
 │  大型网站技术架构笔记.md
-│
-├─.idea
-│  │  misc.xml
-│  │  modules.xml
-│  │  php.xml
-│  │  techbook.iml
-│  │  vcs.xml
-│  │  workspace.xml
-│  │
-│  ├─dictionaries
-│  │      Li.xml
-│  │
-│  └─inspectionProfiles
-│          Project_Default.xml
 │
 ├─CentOS7
 │      CentOS7-MariaDB乱码解决方案.md
@@ -100,12 +86,15 @@ by HyperQing 2018-04-24
 │      CentOS7-SSH2配置.md
 │      CentOS7-使用Git部署项目.md
 │      CentOS7.2-使用yum安装LNMP和配置文档.md
-│      CentOS7.2-安装Swoole引擎.md
-│      install.sh
-│      替换文本.sh
+│      CentOS7.2-安装Swoole.md
 │
 ├─Docker
 │      CentOS7-LNMP-Docker实战.md
+│      Docker的若干种交付方式.md
+│
+├─HTTPS
+│      在Nginx中使用HTTPS证书.md
+│      申请免费HTTPS证书.md
 │
 ├─JAVA
 │      Java多线程.md
@@ -149,11 +138,15 @@ by HyperQing 2018-04-24
 │      vue-cli命令行工具基本使用方法.md
 │      快速学习XML.md
 │
+├─团队管理工具
+│      Gogs代码仓库实践.md
+│
 ├─树莓派
 │      树莓派.md
 │
 ├─设计思路
 │      多人在线一对一即时聊天系统.md
+│      解决方案积累.md
 │      高级文件下载实现.md
 │
 └─设计模式
