@@ -46,8 +46,7 @@ by HyperQing 2018-04-24
 
 ## 编写计划
 
-- 准备换用Gitbook展示
-
+- 更新CentOS LNMP部署文档，MySQL发布8.0，YUM安装默认为8.0。
 - HTTPS 部署：因为后面的诸多产品都依赖HTTPS
 - 我是如何在自己的app上关注仓库的。
 - 设计模式补充：强调如何应用
