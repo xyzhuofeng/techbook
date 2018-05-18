@@ -8,8 +8,8 @@ by HyperQing 2018-04-24
 
 魔法书又开更了！
 
+- 更新 CentOS7的LNMP部署已经升级为**PHP/LNMP安装文档（含技术解读）（未完待续）** 2018-05-18
 - 更新 CentOS的phpMyAdmin安装升级为**PHP/安装phpMyAdmin** 2018-05-16
-- 更新 CentOS7的LNMP部署已经升级为**PHP/LNMP安装文档（含技术解读）（未完待续）** 2018-05-16
 - 新增 **Docker/Docker的若干种交付方式** 2018-05-12
 - 新增 **设计思路/解决方案积累** 2018-05-12
 - 新增 **团队管理工具/Gogs代码仓库实践** 2018-05-12
@@ -48,23 +48,25 @@ by HyperQing 2018-04-24
 
 ## 编写计划
 
-- 更新CentOS LNMP部署文档，MySQL发布8.0，YUM安装默认为8.0。
-- HTTPS 部署：因为后面的诸多产品都依赖HTTPS
-- 我是如何在自己的app上关注仓库的。
-- 设计模式补充：强调如何应用
-- 即时通讯：以APP为例展示
-- 树莓派文档整理
-- 框架原理分析：论框架的诞生
-- 再论cgi.path_info问题
-- ThinkPHP 5.1的PDO预处理：论证如何合理书写防御性代码
-- OpenSSL常用操作：针对AES、3DES等操作
-- 异常处理设计：如何编写合适的异常类并抛出异常
-- PHP命令行工具编写：快速搭建你的PHP命令行工具
-- 精通Git操作
-- PHP7协程实战
-- Redis队列和消息队列
-- 解决方案积累（已完成）
-- Gogs代码仓库部署：为小型企业和团队提供代码仓库解决方案（已完成）
+- MVC框架与Web微框架分析。
+- PHP MVC框架实现原理。
+- HTTPS 部署：因为后面的诸多产品都依赖HTTPS。
+- 我是如何在自制的App上关注自己仓库动态的。
+- 设计模式继续补充。
+- 即时通讯：以APP为例展示。
+- 树莓派文档整理。
+- 框架原理分析：论框架的诞生。
+- 再论cgi.path_info问题。
+- ThinkPHP 5.1的PDO预处理：论证如何合理书写防御性代码。
+- OpenSSL常用操作：针对AES、3DES等操作。
+- 异常处理设计：如何编写合适的异常类并抛出异常。
+- PHP命令行工具编写：快速搭建你的PHP命令行工具。
+- 精通Git操作。
+- PHP7协程实战。
+- Redis队列和消息队列。
+- 更新CentOS LNMP部署文档，MySQL发布8.0，YUM安装默认为8.0（已完成）。
+- 解决方案积累（已完成）。
+- Gogs代码仓库部署：为小型企业和团队提供代码仓库解决方案（已完成）。
 
 ## 已发布的内容
 
@@ -82,12 +84,11 @@ by HyperQing 2018-04-24
 │      CentOS7-mysql修改密码.md
 │      CentOS7-Mysql双机热备份.md
 │      CentOS7-Nginx.conf配置.md
-│      Centos7-phpMyAdmin安装.md
 │      CentOS7-Redis配置文档.md
 │      CentOS7-SSH2配置.md
 │      CentOS7-使用Git部署项目.md
-│      CentOS7.2-使用yum安装LNMP和配置文档.md
 │      CentOS7.2-安装Swoole.md
+│      CentOS7.x-服务器常规操作.md
 │
 ├─Docker
 │      CentOS7-LNMP-Docker实战.md
@@ -115,13 +116,14 @@ by HyperQing 2018-04-24
 ├─PHP
 │      cgi.path_info漏洞问题.md
 │      curl获取天气xml.php
-│      LNMP一键安装包说明.md
+│      LNMP安装文档（含技术解读）.md
 │      PDO简要文档.md
 │      PHP-安全的自动登录Cookies.md
 │      php.ini常用配置.md
 │      PHP7-mcrypt代替方案OpenSSL.md
 │      PHP7编译安装.md
 │      PHPStorm快捷操作.md
+│      安装phpMyAdmin.md
 │      结合PHPStorm使用Xdebug调试.md
 │      读取XML的语句.md
 │
@@ -152,6 +154,7 @@ by HyperQing 2018-04-24
 │
 └─设计模式
         PHP设计模式速查.md
+
 ```
 
 ## License

@@ -392,7 +392,7 @@ set mouse=a
 ```
 从键盘输入 Ctrl+c或Esc，然后输入 :wq 保存、退出。
 
-###更新 HOSTS 配置文件 /ETC/HOSTS
+### 更新 HOSTS 配置文件 /ETC/HOSTS
 
 这个文件的作用跟 Windows 中的 HOSTS 类似，可以给本地系统直接解析域名。设置后，服务器访问自己本身的网站时就不需要经过DNS解析域名。
 
