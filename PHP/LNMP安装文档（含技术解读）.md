@@ -141,7 +141,7 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass4!';
 
 >MySQL APT仓库：https://dev.mysql.com/downloads/repo/apt/
 
->MySQL YUM仓库安装方法：https://dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/
+>MySQL APT仓库安装方法：https://dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/
 
 添加最新 MySQL 源。
 ```
@@ -195,7 +195,6 @@ rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
 ```
 以上提到的各种安装源语句，如果提示失败，请重试几次，成功会有进度条和100%字样(##############[100%])。
 如果该yum源不可用，请使用其他源。
-
 
 ### 查看可安装的PHP版本和扩展
 
