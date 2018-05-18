@@ -94,13 +94,13 @@ nginx 的默认文档要目录是 `/usr/share/nginx/html`。
 
 本次安装 MySQL Community Server 进行演示。
 
-如果你使用的是YUM安装，请阅读以下文章了解详细内容。
+### YUM仓库
+
+如果你使用的是YUM仓库进行安装，请阅读以下文章了解详细内容。
 
 >MySQL YUM仓库：http://dev.mysql.com/downloads/repo/yum/
 
 >MySQL YUM仓库安装方法：https://dev.mysql.com/doc/mysql-yum-repo-quick-guide/en/
-
-### YUM方式安装摘要
 
 添加最新 MySQL 源。
 ```
