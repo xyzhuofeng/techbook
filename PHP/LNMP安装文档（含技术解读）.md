@@ -92,11 +92,11 @@ nginx 的默认文档要目录是 `/usr/share/nginx/html`。
 
 ## 第二步: MySQL
 
-本次安装 MySQL Community Server 进行演示。
+本次安装 MySQL Community Server 进行演示。这里给出YUM和APT两种常用仓库的安装方式。
 
 ### YUM仓库
 
-如果你使用的是YUM仓库进行安装，请阅读以下文章了解详细内容。
+如果你使用的是YUM仓库进行安装，请阅读以下文章了解详细内容。下文提供的是操作摘要，由于官方文档不定期更新，不能保证下面摘要始终都是最新的。
 
 >MySQL YUM仓库：http://dev.mysql.com/downloads/repo/yum/
 
@@ -106,7 +106,6 @@ nginx 的默认文档要目录是 `/usr/share/nginx/html`。
 ```
 rpm -Uvh https://dev.mysql.com/get/mysql80-community-release-el7-1.noarch.rpm
 ```
-
 - 查看所有 MySQL 软件版本，默认8.0的版本会写着“enable”。
 - 如果你需要5.7版本，则禁用8.0版本的。
 - 启用5.7版本。
@@ -133,6 +132,42 @@ grep 'temporary password' /var/log/mysqld.log
 mysql -uroot -p
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass4!';
 ```
+
+### APT仓库
+
+**注：以下内容未经经验，纯属整理参考，待日后验证或请热心人士帮忙验证。**
+
+如果你使用的是APT仓库进行安装，请阅读以下文章了解详细内容。下文提供的是操作摘要，由于官方文档不定期更新，不能保证下面摘要始终都是最新的。
+
+>MySQL APT仓库：https://dev.mysql.com/downloads/repo/apt/
+
+>MySQL YUM仓库安装方法：https://dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/
+
+添加最新 MySQL 源。
+```
+dpkg -i https://dev.mysql.com/get/mysql-apt-config_0.8.10-1_all.deb
+```
+- 选择版本。
+- 更新源。
+- 安装 MySQL 。
+- 安装后会自动启动，查看运行状态即可。
+```
+dpkg-reconfigure mysql-apt-config
+apt-get update
+apt-get install mysql-server
+service mysql status
+```
+- 启动/重启 MySQL。
+- 停止 MySQL 。
+```
+service mysql start
+service mysql stop
+```
+- 执行安全安装程序，在这个过程中可以设置密码。
+```
+mysql_secure_installation 
+```
+
 # === 后面未更，仅供参考 ===
 ## 第三步: PHP
 
