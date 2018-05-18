@@ -123,7 +123,7 @@ yum install mysql-community-server
 systemctl start mysqld.service
 systemctl enable mysqld.service
 ```
-- 查看自动创建的初始密码。
+- 查看自动创建的临时密码。
 ```
 grep 'temporary password' /var/log/mysqld.log
 ```
