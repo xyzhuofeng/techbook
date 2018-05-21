@@ -229,8 +229,6 @@ php71w-pdo php71w-pecl-redis php71w-process php71w-xml
 | cgi, fastcgi | 已经过时了，而且也被包含在cli中 |
 | mod_php TS | 线程安全的PHP模块，与Apache Httpd结合使用 |
 
-# === 后面内容待续 ===
-
 #### Packages
 
 这个命令会列出可安装的程序或扩展，会显示程序版本信息。
@@ -245,7 +243,7 @@ yum search php71w
 
 | 包（Package） | 提供的内容（Provides） | 说明 | 引用参考 |
 | ---- | ---- | ---- | ---- |
-| mod_php72w | php72w, mod_php, php72w-zts | 无 | 无 |
+| mod_php72w | php72w, mod_php, php72w-zts | 供Apache Httpd使用 |  |
 | php72w-bcmath |  | 任意精度数学扩展库。 | http://www.php.net/manual/zh/book.bc.php |
 | php72w-cli | 	php-cgi, php-pcntl, php-readline | PHP 的命令行模式。从命令行里测试 PHP 时非常有用。
 | php72w-common | php-api, php-bz2, php-calendar, php-ctype, php-curl, php-date, php-exif, php-fileinfo, php-filter, php-ftp, php-gettext, php-gmp, php-hash, php-iconv, php-json, php-libxml, php-openssl, php-pcre, php-pecl-Fileinfo, php-pecl-phar, php-pecl-zip, php-reflection, php-session, php-shmop, php-simplexml, php-sockets, php-spl, php-tokenizer, php-zend-abi, php-zip, php-zlib | Common files for PHP。PHP的通用文件。 | 无 |
@@ -259,7 +257,6 @@ yum search php71w
 | php72w-interbase | php_database, php-firebird | Interbase/Firebird databases数据库扩展。
 | php72w-intl | | Internationalization Functions，国际化功能。 | http://php.net/manual/zh/book.intl.php |
 | php72w-ldap | | Lightweight Directory Access Protocol，轻量级目录访问协议。 |  |
-
 | php72w-mbstring |  | 多字节字符串扩展库（例如：转码或计算UTF8字符串长度） | http://php.net/manual/zh/book.mbstring.php |
 | php72w-mysql | php-mysqli, php_database | MySQL扩展。从 PHP 5.5.0 起这个扩展已经被废弃，并且从 PHP 7.0.0. 开始被移除。作为替代，可以使用 mysqli 或者 PDO_MySQL 扩展代替。 | http://php.net/manual/zh/intro.mysql.php |
 | php72w-mysqlnd | php-mysqli, php_database | Mysql Native驱动，最新的MySQL扩展，用 C 写成，5.3开始使用。 http://php.net/manual/zh/intro.mysqlnd.php
@@ -271,32 +268,28 @@ yum search php71w
 | php72w-pecl-apcu | | 来自 PECL 仓库的 ACPu 扩展，ACP User Cache。PHP 字节码和对象缓存器。在 PHP 5.2 版本后可使用OPcache代替。http://www.php.net/apcu https://bbs.aliyun.com/read/275941.html
 | php72w-pecl-imagick |  |  |  | 
 | php72w-pecl-geoip |  | PECL 包的 MongoDB 驱动。 |  |
-| php72w-pecl-memcached |  | PECL 包的 MongoDB 驱动。 |  |
-
-| php72w-pecl-mongodb |  | PECL 包的 MongoDB 驱动。 |  |
-| php72w-pecl-xdebug：PECL 包的 XDebug 扩展。强大的调试工具，在windows下结合phpstorm调试下过拔群，生产环境不推荐安装。
-
+| php72w-pecl-memcached |  |  |  |
+| php72w-pecl-mongodb |  |  |  |
 | php72w-pecl-redis：PECL 包的 Redis 驱动。
-
+| php72w-pecl-xdebug |  | PECL 包的 XDebug 扩展。强大的调试工具，在windows下结合phpstorm调试下过拔群，生产环境不推荐安装。 |
 | php72w-pgsql | php-pdo_pgsql, php_database | PostgreSQL 模块。 |  |
 | php72w-phpdbg |  | PHP Debugger扩展。PHPDBG是一个PHP的SAPI模块，可以在不用修改代码和不影响性能的情况下控制PHP的运行环境。PHPDBG的目标是成为一个轻量级、强大、易用的PHP调试平台。可以在PHP5.4和之上版本中使用。在php5.6和之上版本将内部集成。生产环境不推荐安装。
 | php72w-process |  | Modules for PHP script using system process interfaces。PHP脚本使用系统进程接口的模块。
-| php72w-pspell |  | 这个功能能够检查一个单词的拼写和提供一些建议。属于国际化与字符编码支持。http://php.net/manual/zh/book.pspell.php
+| php72w-pspell |  | 这个功能能够检查一个单词的拼写和提供一些建议。属于国际化与字符编码支持。|  | http://php.net/manual/zh/book.pspell.php |
+| php72w-recode |  | 包含一个GNU Recode libary的接口。这个库可以使文件在多编码字符集和编码编码之间转换。属于国际化与字符编码支持。此扩展在 Windows 平台上不可用。 | http://php.net/manual/zh/intro.recode.php |
+| php72w-sodium |  |  |  |
+| php72w-tidy |  | 标准PHP模块提供的tidy库支持。用来解析、格式化HTML，是一个出色的HTML解析引擎，它最初设计的目的是用来自动修正HTML中的错误和松散的标签。 |  | https://www.baidu.com/baidu?wd=tidy+库&tn=cnopera&ie=utf-8 |
+| php72w-xml |  | XML 解析器。包含php-dom, php-domxml, php-wddx, php-xsl。 | http://php.net/manual/zh/book.xml.php http://php.net/manual/zh/book.tidy.php |
+| php72w-xmlrpc |  | 用于使用 XML-RPC 协议的模块。（此扩展是实验性 的。 此扩展的表象，包括其函数名称以及其他此扩展的相关文档都可能在未来的 PHP 发布版本中未通知就被修改。使用本扩展风险自担 。） | http://php.net/manual/zh/intro.xmlrpc.php |
+| php72w-snmp |  | SNMP扩展提供一个非常简单且容易有效的工具集，通过SNMP协议（简单网络管理协议）来管理远程设备。|  |
+| php72w-soap |  | 用于使用 SOAP 协议的模块。 |  http://php.net/manual/zh/book.soap.php |
 
 
+#### PHP7.1 mcrypt_module_open()替换方案
 
-
-
-| php72w-recode：包含一个GNU Recode libary的接口。这个库可以使文件在多编码字符集和编码编码之间转换。属于国际化与字符编码支持。此扩展在 Windows 平台上不可用。 http://php.net/manual/zh/intro.recode.php
-| php72w-sodium
-| php72w-tidy：标准PHP模块提供的tidy库支持。用来解析、格式化HTML，是一个出色的HTML解析引擎，它最初设计的目的是用来自动修正HTML中的错误和松散的标签。https://www.baidu.com/baidu?wd=tidy+库&tn=cnopera&ie=utf-8
-| php72w-xml：XML 解析器。包含php-dom, php-domxml, php-wddx, php-xsl。http://php.net/manual/zh/book.xml.php http://php.net/manual/zh/book.tidy.php
-| php72w-xmlrpc：用于使用 XML-RPC 协议的模块。（此扩展是实验性 的。 此扩展的表象，包括其函数名称以及其他此扩展的相关文档都可能在未来的 PHP 发布版本中未通知就被修改。使用本扩展风险自担 。）http://php.net/manual/zh/intro.xmlrpc.php
-
-| php72w-snmp：SNMP扩展提供一个非常简单且容易有效的工具集，通过SNMP协议（简单网络管理协议）来管理远程设备。
-| php72w-soap：用于使用 SOAP 协议的模块。 http://php.net/manual/zh/book.soap.php
-
-| php72w-mcrypt：加密支持扩展库。支持20多种加密算法和8种加密模式。在PHP7中淘汰不再使用，需要用openssl代替。 具体见：http://php.net/manual/zh/migration71.deprecated.php http://php.net/manual/zh/book.mcrypt.php
+mcrypt 扩展已经过时了大约10年，并且用起来很复杂。因此它被废弃并且被 OpenSSL 所取代。 从PHP 7.2起它将被从核心代码中移除并且移到PECL中。
+>https://segmentfault.com/q/1010000007210963?_ea=1272687
+>http://php.net/manual/zh/migration71.deprecated.php
 
 ### 执行安装
 这里将安装 PHP 7.1 版本和笔者自己常用的扩展(满足普通Web项目，含Redis)，具体安装的扩展以实际需要为准。
