@@ -262,29 +262,39 @@ yum search php71w
 
 | php72w-mbstring |  | 多字节字符串扩展库（例如：转码或计算UTF8字符串长度） | http://php.net/manual/zh/book.mbstring.php |
 | php72w-mysql | php-mysqli, php_database | MySQL扩展。从 PHP 5.5.0 起这个扩展已经被废弃，并且从 PHP 7.0.0. 开始被移除。作为替代，可以使用 mysqli 或者 PDO_MySQL 扩展代替。 | http://php.net/manual/zh/intro.mysql.php |
-| php72w-mysqlnd：Mysql Native驱动，最新的MySQL扩展，用 C 写成，5.3开始使用。 http://php.net/manual/zh/intro.mysqlnd.php
-| php72w-odbc：用于连接ODBC数据库。例如：Microsoft Access数据库。http://php.net/manual/zh/intro.uodbc.php
-| php72w-opcache：OPcache 通过将 PHP 脚本预编译的字节码存储到共享内存中来提升 PHP 的性能， 存储预编译字节码的好处就是 省去了每次加载和解析 PHP 脚本的开销。http://php.net/manual/zh/book.opcache.php
-| php72w-pdo：PHP数据对象，提供了一个数据访问抽象层，不管使用哪种数据库，都可以用相同的函数（方法）来查询和获取数据。http://php.net/manual/zh/pdo.drivers.php
-| php72w-pdo_dblib：用于连接Microsoft SQL Server数据库的扩展。
-| php72w-pear.noarch：PHP Extension and Application Repository framework. PHP 扩展及应用仓库框架。 http://www.php.net/manual/zh/install.pecl.php
-| php72w-pecl-apcu：来自 PECL 仓库的 ACPu 扩展，ACP User Cache。PHP 字节码和对象缓存器。在 PHP 5.2 版本后可使用OPcache代替。http://www.php.net/apcu https://bbs.aliyun.com/read/275941.html
-| php72w-pecl-apcu-devel：ACPu 开发者文件。
-| php72w-pecl-mongodb：PECL 包的 MongoDB 驱动。
-| php72w-pecl-redis：PECL 包的 Redis 驱动。
+| php72w-mysqlnd | php-mysqli, php_database | Mysql Native驱动，最新的MySQL扩展，用 C 写成，5.3开始使用。 http://php.net/manual/zh/intro.mysqlnd.php
+| php72w-odbc | php-pdo_odbc, php_database | 用于连接ODBC数据库。例如：Microsoft Access数据库。http://php.net/manual/zh/intro.uodbc.php
+| php72w-opcache | php72w-pecl-zendopcache | OPcache 通过将 PHP 脚本预编译的字节码存储到共享内存中来提升 PHP 的性能， 存储预编译字节码的好处就是 省去了每次加载和解析 PHP 脚本的开销。http://php.net/manual/zh/book.opcache.php
+| php72w-pdo | php72w-pdo_sqlite, php72w-sqlite3 | PHP数据对象，提供了一个数据访问抽象层，不管使用哪种数据库，都可以用相同的函数（方法）来查询和获取数据。http://php.net/manual/zh/pdo.drivers.php
+| php72w-pdo_dblib | php72w-mssql | 用于连接Microsoft SQL Server数据库的扩展。 |  |
+| php72w-pear |  | PHP Extension and Application Repository framework. PHP 扩展及应用仓库框架。 http://www.php.net/manual/zh/install.pecl.php
+| php72w-pecl-apcu | | 来自 PECL 仓库的 ACPu 扩展，ACP User Cache。PHP 字节码和对象缓存器。在 PHP 5.2 版本后可使用OPcache代替。http://www.php.net/apcu https://bbs.aliyun.com/read/275941.html
+| php72w-pecl-imagick |  |  |  | 
+| php72w-pecl-geoip |  | PECL 包的 MongoDB 驱动。 |  |
+| php72w-pecl-memcached |  | PECL 包的 MongoDB 驱动。 |  |
+
+| php72w-pecl-mongodb |  | PECL 包的 MongoDB 驱动。 |  |
 | php72w-pecl-xdebug：PECL 包的 XDebug 扩展。强大的调试工具，在windows下结合phpstorm调试下过拔群，生产环境不推荐安装。
-| php72w-pgsql：PostgreSQL 模块。
-| php72w-phpdbg：PHP Debugger扩展。PHPDBG是一个PHP的SAPI模块，可以在不用修改代码和不影响性能的情况下控制PHP的运行环境。PHPDBG的目标是成为一个轻量级、强大、易用的PHP调试平台。可以在PHP5.4和之上版本中使用。在php5.6和之上版本将内部集成。生产环境不推荐安装。
-| php72w-process：Modules for PHP script using system process interfaces。PHP脚本使用系统进程接口的模块。
-| php72w-pspell：这个功能能够检查一个单词的拼写和提供一些建议。属于国际化与字符编码支持。http://php.net/manual/zh/book.pspell.php
+
+| php72w-pecl-redis：PECL 包的 Redis 驱动。
+
+| php72w-pgsql | php-pdo_pgsql, php_database | PostgreSQL 模块。 |  |
+| php72w-phpdbg |  | PHP Debugger扩展。PHPDBG是一个PHP的SAPI模块，可以在不用修改代码和不影响性能的情况下控制PHP的运行环境。PHPDBG的目标是成为一个轻量级、强大、易用的PHP调试平台。可以在PHP5.4和之上版本中使用。在php5.6和之上版本将内部集成。生产环境不推荐安装。
+| php72w-process |  | Modules for PHP script using system process interfaces。PHP脚本使用系统进程接口的模块。
+| php72w-pspell |  | 这个功能能够检查一个单词的拼写和提供一些建议。属于国际化与字符编码支持。http://php.net/manual/zh/book.pspell.php
+
+
+
+
+
 | php72w-recode：包含一个GNU Recode libary的接口。这个库可以使文件在多编码字符集和编码编码之间转换。属于国际化与字符编码支持。此扩展在 Windows 平台上不可用。 http://php.net/manual/zh/intro.recode.php
-| php72w-snmp：SNMP扩展提供一个非常简单且容易有效的工具集，通过SNMP协议（简单网络管理协议）来管理远程设备。
-| php72w-soap：用于使用 SOAP 协议的模块。 http://php.net/manual/zh/book.soap.php
 | php72w-sodium
 | php72w-tidy：标准PHP模块提供的tidy库支持。用来解析、格式化HTML，是一个出色的HTML解析引擎，它最初设计的目的是用来自动修正HTML中的错误和松散的标签。https://www.baidu.com/baidu?wd=tidy+库&tn=cnopera&ie=utf-8
 | php72w-xml：XML 解析器。包含php-dom, php-domxml, php-wddx, php-xsl。http://php.net/manual/zh/book.xml.php http://php.net/manual/zh/book.tidy.php
 | php72w-xmlrpc：用于使用 XML-RPC 协议的模块。（此扩展是实验性 的。 此扩展的表象，包括其函数名称以及其他此扩展的相关文档都可能在未来的 PHP 发布版本中未通知就被修改。使用本扩展风险自担 。）http://php.net/manual/zh/intro.xmlrpc.php
 
+| php72w-snmp：SNMP扩展提供一个非常简单且容易有效的工具集，通过SNMP协议（简单网络管理协议）来管理远程设备。
+| php72w-soap：用于使用 SOAP 协议的模块。 http://php.net/manual/zh/book.soap.php
 
 | php72w-mcrypt：加密支持扩展库。支持20多种加密算法和8种加密模式。在PHP7中淘汰不再使用，需要用openssl代替。 具体见：http://php.net/manual/zh/migration71.deprecated.php http://php.net/manual/zh/book.mcrypt.php
 

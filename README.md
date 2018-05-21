@@ -6,9 +6,7 @@ by HyperQing 2018-04-24
 
 ## 最近更新
 
-魔法书又开更了！
-
-- 更新 CentOS7的LNMP部署已经升级为**PHP/LNMP安装文档（含技术解读）（未完待续）** 2018-05-18
+- 更新 CentOS7的LNMP部署已经升级为**PHP/LNMP安装文档（含APT和YUM）** 2018-05-18
 - 更新 CentOS的phpMyAdmin安装升级为**PHP/安装phpMyAdmin** 2018-05-16
 - 新增 **Docker/Docker的若干种交付方式** 2018-05-12
 - 新增 **设计思路/解决方案积累** 2018-05-12
@@ -48,14 +46,13 @@ by HyperQing 2018-04-24
 
 ## 编写计划
 
-- MVC框架与Web微框架分析。
+- 树莓派文档整理。
+- MVC框架与Web微框架分析，框架原理分析：论框架的诞生。
 - PHP MVC框架实现原理。
 - HTTPS 部署：因为后面的诸多产品都依赖HTTPS。
 - 我是如何在自制的App上关注自己仓库动态的。
 - 设计模式继续补充。
 - 即时通讯：以APP为例展示。
-- 树莓派文档整理。
-- 框架原理分析：论框架的诞生。
 - 再论cgi.path_info问题。
 - ThinkPHP 5.1的PDO预处理：论证如何合理书写防御性代码。
 - OpenSSL常用操作：针对AES、3DES等操作。
@@ -63,6 +60,7 @@ by HyperQing 2018-04-24
 - PHP命令行工具编写：快速搭建你的PHP命令行工具。
 - 精通Git操作。
 - PHP7协程实战。
+- Swoole和Workerman。
 - Redis队列和消息队列。
 - 更新CentOS LNMP部署文档，MySQL发布8.0，YUM安装默认为8.0（已完成）。
 - 解决方案积累（已完成）。
