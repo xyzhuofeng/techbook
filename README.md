@@ -68,7 +68,7 @@ by HyperQing 2018-04-24
 
 ## 已发布的内容
 
-2018-05-12更新目录
+2018-05-24更新目录
 ```
 根目录
 │  Atom格式化代码ctrl_alt_L.coffee
@@ -114,7 +114,7 @@ by HyperQing 2018-04-24
 ├─PHP
 │      cgi.path_info漏洞问题.md
 │      curl获取天气xml.php
-│      LNMP安装文档（含技术解读）.md
+│      LNMP安装文档（含APT和YUM）.md
 │      PDO简要文档.md
 │      PHP-安全的自动登录Cookies.md
 │      php.ini常用配置.md
@@ -146,13 +146,13 @@ by HyperQing 2018-04-24
 │      树莓派.md
 │
 ├─设计思路
+│      MVC框架与微型Web框架分析.md
 │      多人在线一对一即时聊天系统.md
 │      解决方案积累.md
 │      高级文件下载实现.md
 │
 └─设计模式
         PHP设计模式速查.md
-
 ```
 
 ## License
