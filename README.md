@@ -48,6 +48,10 @@ by HyperQing 2018-04-24
 
 ## 编写计划
 
+Doing:
+- (暂无)
+
+Todo:
 - 树莓派文档整理。
 - MVC框架与Web微框架分析，框架原理分析：论框架的诞生。
 - PHP MVC框架实现原理。
@@ -65,7 +69,7 @@ by HyperQing 2018-04-24
 - Swoole和Workerman。
 - Redis队列和消息队列。
 
-已完成：
+Done：
 - 更新CentOS LNMP部署文档，MySQL发布8.0，YUM安装默认为8.0（已完成）。
 - 解决方案积累（已完成）。
 - Gogs代码仓库部署：为小型企业和团队提供代码仓库解决方案（已完成）。
