@@ -23,3 +23,7 @@ by HyperQing
 我将尝试通过《MVC框架揭秘》系列来解释这些问题。
 
 ## 自动加载
+
+pushHandler(new xxxHandler('',Logger::DEBUG))
+
+monolog
