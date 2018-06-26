@@ -149,6 +149,9 @@ DatePeriod::是迭代器，可用于重复在日程表中记事
 
 推荐存储UTC时间
 
+可以使用nesbot/carbon组件
+
+
 ## 字符编码
 
 php.ini
@@ -242,3 +245,13 @@ set_error_handler(function($errno,$errstr,$errfile,$errline){
 
 ## 主机相关
 
+不推荐买共享服务器
+
+推荐购买VPS、专用服务器、PaaS。
+
+## 配置
+
+VPS除了阿里云、腾讯云，国外的linode是供应商之一
+
+
+apt-update
