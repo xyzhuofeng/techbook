@@ -253,5 +253,51 @@ set_error_handler(function($errno,$errstr,$errfile,$errline){
 
 VPS除了阿里云、腾讯云，国外的linode是供应商之一
 
+升级软件
 
-apt-update
+apt-get update
+apt-get upgrade
+
+yum update
+
+创建非根用户
+**在ubuntu中**
+将deploy用户加入sudo用户组，即输入密码后可以获得特殊权限
+usermod -a -G sudo deploy
+
+**centos**
+
+创建一个名为deploy的用户
+
+adduser deploy
+
+为deploy用户设置密码
+
+passwd deploy
+
+将deploy加入wheel用户组
+usermod -a -G wheel deploy
+
+让deploy用户拥有sudo权限
+
+SSH秘钥
+touch ~/.ssh/authorized_keys
+cat ~/id_rsa.pub >> ~/.ssh/authorized_keys
+
+修改目录权限仅能让deploy用户访问~/.ssh目录和~/.ssh/authorized_keys文件
+
+chown -R deploy:deploy ~/.ssh;
+chmod 700 ~/.ssh;
+chmod 600 ~/.ssh/authorized_keys;
+
+重启ssh
+**ubuntu**
+sudo service ssh restart
+
+**centos**
+
+sudo systemctl restart sshd.service
+
+从现在开始使用deploy用户执行其他操作
+
+
