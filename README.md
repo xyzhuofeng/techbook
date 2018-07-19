@@ -8,6 +8,7 @@ by HyperQing 2018-07-17
 
 作者正式上班了，相比学生时代可能会降低更新频率，但因为工作中快速成长，部分简单低难度的文章编写计划可能会被废弃，转而编写部分更高层次的文章。亦或是产生了新的观点，需要一段时间来研究实践，才能最终写成文章。大家一同努力，在自己的岗位上发挥更大的价值！
 
+- 新增 **树莓派代理服务器内网穿透文档** 2018-07-19
 - 新增 **MySQL的SQL优化方法** 2018-07-17
 - 更新 **PHP技巧摘要预览版** 2018-06-27
 - 新增 **PHP技巧摘要预览版** 2018-06-21
@@ -52,7 +53,6 @@ Doing:
 - PHP MVC框架揭秘（一）预计会分开多篇文章来写
 
 Todo:
-- 树莓派文档整理。
 - MVC框架与Web微框架分析，框架原理分析：论框架的诞生。
 - HTTPS 部署：因为后面的诸多产品都依赖HTTPS。
 - 我是如何在自制的App上关注自己仓库动态的。
@@ -68,99 +68,11 @@ Todo:
 - Redis队列和消息队列。
 
 Done：
+- 树莓派代理服务器内网穿透文档
 - MySQL的SQL优化方法
 - 更新CentOS LNMP部署文档，MySQL发布8.0，YUM安装默认为8.0（已完成）。
 - 解决方案积累（已完成）。
 - Gogs代码仓库部署：为小型企业和团队提供代码仓库解决方案（已完成）。
-
-## 已发布的内容
-
-2018-05-24更新目录
-```
-根目录
-│  Atom格式化代码ctrl_alt_L.coffee
-│  README.md
-│  Redis快速开始.md
-│  vue使用element-ui的el-input监听不了回车事件.md
-│  大型网站技术架构笔记.md
-│
-├─CentOS7
-│      CentOS7-MariaDB乱码解决方案.md
-│      CentOS7-mysql修改密码.md
-│      CentOS7-Mysql双机热备份.md
-│      CentOS7-Nginx.conf配置.md
-│      CentOS7-Redis配置文档.md
-│      CentOS7-SSH2配置.md
-│      CentOS7-使用Git部署项目.md
-│      CentOS7.2-安装Swoole.md
-│      CentOS7.x-服务器常规操作.md
-│
-├─Docker
-│      CentOS7-LNMP-Docker实战.md
-│      Docker的若干种交付方式.md
-│
-├─HTTPS
-│      在Nginx中使用HTTPS证书.md
-│      申请免费HTTPS证书.md
-│
-├─JAVA
-│      Java多线程.md
-│      JSP学习笔记.md
-│
-├─MySQL
-│      《MariaDB必知必会》学习笔记.md
-│
-├─Nginx
-│      Nginx-gzip压缩优化加载速度.md
-│      nginx301跳转配置
-│      Nginx三个版本的区别.md
-│      Nginx基本操作与负载均衡
-│      Nginx基本操作与负载均衡.md
-│      Nginx适配Thinkphp的PATH_INFO的URL模式.md
-│
-├─PHP
-│      cgi.path_info漏洞问题.md
-│      curl获取天气xml.php
-│      LNMP安装文档（含APT和YUM）.md
-│      PDO简要文档.md
-│      PHP-安全的自动登录Cookies.md
-│      php.ini常用配置.md
-│      PHP7-mcrypt代替方案OpenSSL.md
-│      PHP7编译安装.md
-│      PHPStorm快捷操作.md
-│      安装phpMyAdmin.md
-│      结合PHPStorm使用Xdebug调试.md
-│      读取XML的语句.md
-│
-├─python
-│      python.md
-│
-├─其他
-│      Git进阶与团队协作.md
-│      网站搭建.md
-│
-├─前端
-│      CSS溢出文本截断和滚动条自定义.css
-│      Flex实现的页脚固定在页面底部效果.md
-│      jquery-动态加载更多文章.js
-│      vue-cli命令行工具基本使用方法.md
-│      快速学习XML.md
-│
-├─团队管理工具
-│      Gogs代码仓库实践.md
-│
-├─树莓派
-│      树莓派.md
-│
-├─设计思路
-│      MVC框架与微型Web框架分析.md
-│      多人在线一对一即时聊天系统.md
-│      解决方案积累.md
-│      高级文件下载实现.md
-│
-└─设计模式
-        PHP设计模式速查.md
-```
 
 ## License
 
