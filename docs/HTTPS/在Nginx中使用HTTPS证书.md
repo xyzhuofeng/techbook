@@ -9,5 +9,3 @@
 例如腾讯云的有`1_abc.domain.com_bundle.crt`和`2_abc.domain.com.key`。
 
 将证书放到`/etc/nginx/ssl/`。(这是可选的操作)
-
-TODO
