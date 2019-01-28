@@ -1,17 +1,14 @@
 # 全栈魔法书
 
-by HyperQing 2018-08-11
+by HyperQing 2019-01-28
 
-**禁止未经授权转载（具体见License）**
+Web版本： 
+
+[https://hyperqing.github.io/techbook/](https://hyperqing.github.io/techbook/)
 
 ## 最近更新
 
-- 新增 **代码整洁之道笔记** 2018-08-11
-- 新增 **后端生产实践经验** 2018-07-19
-- 新增 **Laravel结合前端工程化实践** 2018-07-19
-- 新增 **【首次团队讲座】从学生到开发者，带你走进产品的世界** 2018-07-19
-- 新增 **树莓派代理服务器内网穿透文档** 2018-07-19
-- 新增 **MySQL的SQL优化方法** 2018-07-17
+- 使用 Docsify + Github Pages 部署文档
 
 ## 介绍
 
@@ -38,12 +35,12 @@ by HyperQing 2018-08-11
 ## 互动
 
 如果你有
+
 1. 意见或建议。
 2. 更好的解决方案。
 3. 发现疏漏错误之处。
-请到 Issues 发表，我会尽快回复你。
 
-合作请联系：me@hyperqing.com
+请到 Issues 发表，我会尽快回复你。
 
 ## License
 
