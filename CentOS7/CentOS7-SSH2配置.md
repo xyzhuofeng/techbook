@@ -1,4 +1,7 @@
-#CentOS7 SSH2-RSA配置
+# CentOS7 SSH2-RSA配置
+
+[TOC]
+
 by HyperQing
 已适配阿里云，主机环境：CentOS 7
 
@@ -14,7 +17,7 @@ by HyperQing
 ——百度百科"SSH"
 
 ----
-###这里使用Xshell软件连接主机
+### 这里使用Xshell软件连接主机
 如果你使用的是putty软件，客户机操作仅供参考，putty有类似的功能，请仔细找找。
 
 **下述在你的客户机上进行，这可能是你的台式机或笔记本**
@@ -50,14 +53,14 @@ mkdir .ssh
 chmod 700 .ssh
 ```
 进入.ssh目录，在该目录下创建一个空白文件authorized_keys，并更改该文件权限为600
-```
-cd .ssh
-touch authorized_keys
-chmod 600 authorized_keys
+```shell
+$ cd .ssh
+$ touch authorized_keys
+$ chmod 600 authorized_keys
 ```
 使用vim打开该文件
-```
-vim authorized_keys
+```shell
+$ vim authorized_keys
 ```
 将上述客户机操作中导出的公钥文件内容复制一下
 按 **i** 进入编辑模式，按下鼠标右键粘贴公钥。
@@ -71,8 +74,8 @@ ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQELFFfIWTLLzs7Ens7EnTC5+qHk+D7hfvyVXyqZ5uC8e5me
 :wq
 ```
 打开SSH的配置文件，以启用SSH2登录。
-```
-vim /etc/ssh/sshd_config
+```shell
+$ vim /etc/ssh/sshd_config
 ```
 文件包含了一些设置（节选了部分）：（如果前面有#符号，请记得去除以启用该项设置）
 ```
